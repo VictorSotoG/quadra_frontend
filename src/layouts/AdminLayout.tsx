@@ -1,4 +1,6 @@
 import { Outlet } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css'
 import AdminSideBar from "../components/Admin/AdminSideBar";
 import TopBar from "../components/Admin/TopBar";
 
@@ -14,6 +16,10 @@ export default function AdminLayout() {
                 <TopBar />
                 <Outlet/>
             </main>
+            <ToastContainer 
+              pauseOnHover={false}
+              pauseOnFocusLoss={false}
+            />
         </div>
     </>
   )
