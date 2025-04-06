@@ -1,0 +1,29 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Scrollbar como utilidad */
+@layer utilities {
+    .scrollbar-custom {
+      --sb-track-color: #32444c;
+      --sb-thumb-color: #74a4c7;
+      --sb-size: 8px;
+  
+      scrollbar-color: var(--sb-thumb-color) var(--sb-track-color);
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar {
+      width: var(--sb-size);
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar-track {
+      background: var(--sb-track-color);
+      border-radius: 5px;
+    }
+  
+    .scrollbar-custom::-webkit-scrollbar-thumb {
+      background: var(--sb-thumb-color);
+      border-radius: 5px;
+    }
+  }
