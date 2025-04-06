@@ -4,7 +4,7 @@ export default function LogoAdmin() {
     <>
         <div className="flex justify-center mt-4 px-4">
             <div className="relative w-72">
-                <img src="/logos/logo-5.png" alt="" />
+                <img src="/logos/logo-4.png" alt="" />
             </div>
         </div>
     </>

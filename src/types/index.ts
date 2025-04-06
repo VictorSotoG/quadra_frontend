@@ -1,5 +1,39 @@
-import { Description } from "@headlessui/react";
+
 import { z } from "zod";
+
+/* Vehiculos */
+export const carsSchema = z.object({
+    id: z.number(),
+    marca: z.string(),
+    modelo: z.string(),
+    color: z.string(),
+    anio: z.number(),
+    transmision: z.string(),
+    tipo: z.string(),
+    precio_por_dia: z.number(),
+    seguroId: z.number(),
+    imagen: z.string(),
+    estado: z.string()
+})
+
+export const adminCarSchema = z.array(
+    carsSchema.pick({
+        id: true,
+        marca: true,
+        modelo: true,
+        color: true,
+        anio: true,
+        transmision: true,
+        tipo: true,
+        precio_por_dia: true,
+        seguroId: true,
+        imagen: true,
+        estado: true
+    })
+)
+
+export type Car = z.infer<typeof carsSchema>;
+export type CarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguroId' | 'imagen' | 'estado'>
 
 /* Insurances */
 export const insuranceSchema = z.object({
@@ -9,6 +43,16 @@ export const insuranceSchema = z.object({
     precio: z.number(),
     descripcion: z.string()
 })
+
+export const adminInsuranceSchema = z.array(
+    insuranceSchema.pick({
+        id: true,
+        tipo: true,
+        cobertura: true,
+        precio: true,
+        descripcion: true
+    })
+)
 
 export type Insurance = z.infer<typeof insuranceSchema>
 export type InsuranceFormData = Pick<Insurance, 'tipo' | 'cobertura' | 'precio' | 'descripcion'>

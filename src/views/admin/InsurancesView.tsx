@@ -16,14 +16,13 @@ export default function InsurancesView() {
     queryKey: ['insurances'],
     queryFn: getAllInsurances
   })
-
-  console.log(data)
+  
   if (isLoading) return 'Cargando...'
   
-  return (
+  if(data) return (
     <div>
       <p className='p-4 font-semibold text-xl'>Seguros</p>
-      {/* <DataTable columns={columns}  /> */}
+      <DataTable columns={columns} data={data} />
     </div>
   )
 }
