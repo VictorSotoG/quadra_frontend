@@ -56,3 +56,28 @@ export const adminInsuranceSchema = z.array(
 
 export type Insurance = z.infer<typeof insuranceSchema>
 export type InsuranceFormData = Pick<Insurance, 'tipo' | 'cobertura' | 'precio' | 'descripcion'>
+
+
+/* Branches Schema */
+export const branchesSchema = z.object({
+    id: z.number(),
+    nombre: z.string(),
+    direccion: z.string(),
+    telefono: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string()
+})
+
+export const adminBranchSchema = z.array(
+    branchesSchema.pick({
+        id: true,
+        nombre: true,
+        direccion: true,
+        telefono: true,
+        createdAt: true,
+        updatedAt: true
+    })
+)
+
+export type Branch = z.infer<typeof branchesSchema>
+export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>

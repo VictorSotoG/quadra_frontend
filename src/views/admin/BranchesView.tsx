@@ -8,7 +8,9 @@ export default function BranchesView() {
     { key: 'id', label: 'Id_Sucursal' },
     { key: 'nombre', label: 'Nombre' },
     { key: 'direccion', label: 'Direccion' },
-    { key: 'telefono', label: 'telefono' },
+    { key: 'telefono', label: 'Telefono' },
+    { key: 'createdAt', label: 'Creado en' },
+    { key: 'updatedAt', label: 'Actualizado en' },
   ]
 
   const { data } = useQuery({
@@ -17,11 +19,10 @@ export default function BranchesView() {
   })
 
 
-  return (
+  if(data) return (
     <div className="px-6">
       <div className='p-4 font-semibold text-xl'>Sucursales</div>
       <DataTable columns={columns} data={data} />
     </div>
-    
   )
 }
