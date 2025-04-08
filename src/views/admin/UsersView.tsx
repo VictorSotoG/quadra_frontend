@@ -1,7 +1,7 @@
-// import { useQuery } from "@tanstack/react-query"
+import { useQuery } from "@tanstack/react-query"
 // import { getAllUsers } from "../../api/UsersAPI"
 
-// export default function UsersView() {
+export default function UsersView() {
 
 //   const { data } = useQuery({
 //     queryKey: ['users'],
@@ -9,7 +9,7 @@
 //   })
 
 //   console.log(data)
-//   return (
-//     <div className='p-4 font-semibold text-xl'>Usuarios</div>
-//   )
-// }
+  return (
+    <div className='p-4 font-semibold text-xl'>Usuarios</div>
+  )
+}

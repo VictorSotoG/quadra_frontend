@@ -12,7 +12,7 @@ type DataTableProps = {
 
 export default function DataTable({ columns, data }: DataTableProps) {
     return (
-        <div className=" bg-white mx-6 rounded-lg overflow-hidden">
+        <div className=" bg-white rounded-lg overflow-hidden border border-gray-300">
             <table className="min-w-full divide-y divide-gray-300">
                 <thead>
                     <tr>
@@ -33,7 +33,7 @@ export default function DataTable({ columns, data }: DataTableProps) {
                 </thead>
                 <tbody className="divide-y divide-gray-200">
                     {data.map((row, i) => (
-                        <tr key={i} className="hover:bg-gray-100 odd:bg-slate-200">
+                        <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
                                 {row[col.key]}

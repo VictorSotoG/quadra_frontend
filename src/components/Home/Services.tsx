@@ -9,7 +9,7 @@ export default function Services() {
                     <div className="flex flex-col gap-8 md:flex-row justify-center items-center">
                         <div className=" bg-white p-10 rounded-lg shadow-lg max-w-72">
                             <img 
-                                src="/public/iconos/icono-tabla.png" 
+                                src="/iconos/icono-tabla.png" 
                                 alt="tabla"
                                 className="mx-auto"
                             />
@@ -19,7 +19,7 @@ export default function Services() {
                         
                         <div className="bg-white p-10 rounded-lg shadow-lg max-w-72">
                             <img 
-                                src="/public/iconos/icono-carro.png" 
+                                src="/iconos/icono-carro.png" 
                                 alt="icono-carro" 
                                 className="mx-auto"/>
                             <h3 className="text-xl font-bold my-6">Alquiler</h3>
@@ -28,7 +28,7 @@ export default function Services() {
             
                         <div className="bg-white p-10 rounded-lg shadow-lg max-w-72">
                             <img 
-                                src="/public/iconos/icono-camion.png" 
+                                src="/iconos/icono-camion.png" 
                                 alt="icono-camion"
                                 className="mx-auto"
                             />

@@ -34,7 +34,7 @@ export default function AppLayout() {
           <div className="h-auto flex flex-col gap-8 text-center lg:flex-row mx-auto lg:w-[1200px] lg:justify-between">
             <div className="m-10 flex flex-col gap-8 sm:flex-row justify-center lg:flex-col">
               <div className="w-56 mx-auto">
-                <img src="/public/logos/logo-1.png" alt="logo"/>
+                <img src="/logos/logo-1.png" alt="logo"/>
               </div>
               <div className="content-center">
                   <h3 className="font-bold text-lg mb-4">QUADRA</h3>

@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query"
 import { getAllCars } from "../../api/CarsAPI"
 import DataTable from "../../components/Admin/DataTable"
+import { Link } from "react-router-dom"
 
 export default function CarsView() {
 
@@ -21,7 +22,7 @@ export default function CarsView() {
     // { key: 'updatedAt', label: 'Id_Seguro' },
   ]
 
-  const { data, isError, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: ['cars'],
     queryFn: getAllCars
   })
@@ -29,9 +30,13 @@ export default function CarsView() {
   if (isLoading) return 'Cargando...'
   
   if(data) return (
-    <>
-      <div className='p-4 font-semibold text-xl'>Vehiculos</div>
+    <div className="px-6">
+      <div className='p-4 font-semibold text-2xl'>Vehiculos</div>
+      <Link
+        to={'/admin/cars/create'}
+        className="inline-block mb-4 px-6 py-2 bg-sky-600 hover:bg-sky-800 text-white rounded-md"
+      >Agregar Auto</Link>
       <DataTable columns={columns} data={data} />
-    </>
+    </div>
   )
 }
