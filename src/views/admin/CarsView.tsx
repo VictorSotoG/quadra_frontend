@@ -17,9 +17,8 @@ export default function CarsView() {
     { key: 'seguroId', label: 'Seguro' },
     { key: 'imagen', label: 'Imagen' },
     { key: 'estado', label: 'Estado' },
-    // { key: 'acciones', label: 'Acciones'},
-    // { key: 'createdAt', label: 'Id_Seguro' },
-    // { key: 'updatedAt', label: 'Id_Seguro' },
+    { key: 'createdAt', label: 'Creado en' },
+    { key: 'updatedAt', label: 'Actualizado en' },
   ]
 
   const { data, isLoading } = useQuery({

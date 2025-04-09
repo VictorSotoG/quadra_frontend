@@ -13,7 +13,9 @@ export const carsSchema = z.object({
     precio_por_dia: z.number(),
     seguroId: z.number(),
     imagen: z.string(),
-    estado: z.string()
+    estado: z.string(),
+    createdAt: z.string(),
+    updatedAt: z.string()
 })
 
 export const adminCarSchema = z.array(
@@ -28,12 +30,14 @@ export const adminCarSchema = z.array(
         precio_por_dia: true,
         seguroId: true,
         imagen: true,
-        estado: true
+        estado: true,
+        createdAt: true,
+        updatedAt: true
     })
 )
 
 export type Car = z.infer<typeof carsSchema>;
-export type CarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguroId' | 'imagen' | 'estado'>
+export type CarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguroId' | 'imagen' | 'estado' | 'createdAt' | 'updatedAt'>
 
 /* Insurances */
 export const insuranceSchema = z.object({

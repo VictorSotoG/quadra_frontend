@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { formateDate } from "../../utils/utils";
 
 type Column = {
     key: string;
@@ -36,7 +37,11 @@ export default function DataTable({ columns, data }: DataTableProps) {
                         <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
-                                {row[col.key]}
+                                {col.key.includes('At') && row[col.key] ? (
+                                    formateDate(row[col.key])
+                                ): (
+                                    row[col.key]
+                                )}
                                 </td>
                             ))}
                             <td className="p-2 flex gap-2 items-center">
