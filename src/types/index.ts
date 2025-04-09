@@ -2,7 +2,7 @@
 import { z } from "zod";
 
 /* Vehiculos */
-export const carsSchema = z.object({
+export const carSchema = z.object({
     id: z.number(),
     marca: z.string(),
     modelo: z.string(),
@@ -19,7 +19,7 @@ export const carsSchema = z.object({
 })
 
 export const adminCarSchema = z.array(
-    carsSchema.pick({
+    carSchema.pick({
         id: true,
         marca: true,
         modelo: true,
@@ -36,7 +36,7 @@ export const adminCarSchema = z.array(
     })
 )
 
-export type Car = z.infer<typeof carsSchema>;
+export type Car = z.infer<typeof carSchema>;
 export type CarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguroId' | 'imagen' | 'estado' | 'createdAt' | 'updatedAt'>
 
 /* Insurances */
@@ -48,7 +48,7 @@ export const insuranceSchema = z.object({
     descripcion: z.string()
 })
 
-export const adminInsuranceSchema = z.array(
+export const adminInsurancesSchema = z.array(
     insuranceSchema.pick({
         id: true,
         tipo: true,
@@ -63,12 +63,11 @@ export type InsuranceFormData = Pick<Insurance, 'tipo' | 'cobertura' | 'precio' 
 
 
 /* Users Schema */
-export const usersSchema = z.object({
+export const userSchema = z.object({
     id: z.number(),
     nombre: z.string(),
     apellido: z.string(),
     email: z.string(),
-    password: z.string(),
     role: z.string(),
     imagen: z.string(),
     confirmado: z.boolean(),
@@ -76,12 +75,26 @@ export const usersSchema = z.object({
     updatedAt: z.string()
 });
 
-export type Users = z.infer<typeof usersSchema>;
-export type UsersFormData = Pick<Users, 'nombre' | 'apellido' | 'email' | 'password' | 'role' | 'imagen' | 'confirmado'>
+export const adminUsersSchema = z.array(
+    userSchema.pick({
+        id: true,
+        nombre: true,
+        apellido: true,
+        email: true,
+        role: true,
+        imagen: true,
+        confirmado: true,
+        createdAt: true,
+        updatedAt: true
+    })
+)
+
+export type User = z.infer<typeof userSchema>;
+export type UserFormData = Pick<User, 'nombre' | 'apellido' | 'email' | 'role' | 'imagen' | 'confirmado'>
 
 
 /* Branches Schema */
-export const branchesSchema = z.object({
+export const branchSchema = z.object({
     id: z.number(),
     nombre: z.string(),
     direccion: z.string(),
@@ -91,7 +104,7 @@ export const branchesSchema = z.object({
 })
 
 export const adminBranchSchema = z.array(
-    branchesSchema.pick({
+    branchSchema.pick({
         id: true,
         nombre: true,
         direccion: true,
@@ -101,5 +114,5 @@ export const adminBranchSchema = z.array(
     })
 )
 
-export type Branch = z.infer<typeof branchesSchema>
+export type Branch = z.infer<typeof branchSchema>
 export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>

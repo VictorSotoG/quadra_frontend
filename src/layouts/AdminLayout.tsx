@@ -12,7 +12,7 @@ export default function AdminLayout() {
                 <AdminSideBar />
             </aside>
             {/* bg-[#0e2a47] */}
-            <main className="flex-1">
+            <main className="flex-1 bg-slate-100">
                 <TopBar />
                 <Outlet/>
             </main>

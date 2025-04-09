@@ -13,7 +13,7 @@ type DataTableProps = {
 
 export default function DataTable({ columns, data }: DataTableProps) {
     return (
-        <div className=" bg-white rounded-lg overflow-hidden border border-gray-300">
+        <div className=" bg-slate-50 rounded-lg overflow-hidden border border-gray-300">
             <table className="min-w-full divide-y divide-gray-300">
                 <thead>
                     <tr>
