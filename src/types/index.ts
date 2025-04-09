@@ -62,6 +62,24 @@ export type Insurance = z.infer<typeof insuranceSchema>
 export type InsuranceFormData = Pick<Insurance, 'tipo' | 'cobertura' | 'precio' | 'descripcion'>
 
 
+/* Users Schema */
+export const usersSchema = z.object({
+    id: z.number(),
+    nombre: z.string(),
+    apellido: z.string(),
+    email: z.string(),
+    password: z.string(),
+    role: z.string(),
+    imagen: z.string(),
+    confirmado: z.boolean(),
+    createdAt: z.string(),
+    updatedAt: z.string()
+});
+
+export type Users = z.infer<typeof usersSchema>;
+export type UsersFormData = Pick<Users, 'nombre' | 'apellido' | 'email' | 'password' | 'role' | 'imagen' | 'confirmado'>
+
+
 /* Branches Schema */
 export const branchesSchema = z.object({
     id: z.number(),
