@@ -1,13 +1,15 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminCarSchema, Car, carSchema } from "../types";
+import { adminReservationSchema, Reservation, reservationSchema } from "../types";
 
-export async function getAllCars() {
+
+export async function getAllReservations() {
     try {
-        const { data } = await api('/cars');
-        const response = adminCarSchema.safeParse(data)
+        const { data } = await api('/reservations');
+        const response = adminReservationSchema.safeParse(data)
+        console.log(response)
         if (response.success) {
-            return response.data
+            return response
         }
     } catch (error) {
         if (isAxiosError(error) && error.response) {
@@ -16,10 +18,10 @@ export async function getAllCars() {
     }
 }
 
-export async function getCarById(id: Car['id']) {
+export async function getReservationById(id: Reservation['_id']) {
     try {
-        const { data } = await api(`/cars/${id}`)
-        const response = carSchema.safeParse(data)
+        const { data } = await api(`/reservations/${id}`)
+        const response = reservationSchema.safeParse(data)
         if (response.success) {
             return response.data
         }

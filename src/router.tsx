@@ -8,12 +8,14 @@ import ConfirmAccountView from "./views/auth/ConfirmAccountView";
 import ForgotPasswordView from "./views/auth/ForgotPasswordView";
 import About from "./views/About";
 import AdminLayout from "./layouts/AdminLayout";
-import CarsView from "./views/admin/CarsView";
+import CarsView from "./views/admin/cars/CarsView";
 import InsurancesView from "./views/admin/InsurancesView";
 import UsersView from "./views/admin/UsersView";
-import ReservationsView from "./views/admin/ReservationsView";
+import ReservationsView from "./views/admin/reservations/ReservationsView";
 import MaintenanceView from "./views/admin/MaintenanceView";
 import BranchesView from "./views/admin/BranchesView";
+import ReservationDetails from "./views/admin/reservations/ReservationDetails";
+import CarDetails from "./views/admin/cars/CarDetails";
 
 export default function Router() {
   return (
@@ -32,9 +34,11 @@ export default function Router() {
             </Route>
             <Route element={<AdminLayout />}>
               <Route path="/admin/cars" element={<CarsView/>}/>
+              <Route path="/admin/cars/details/:carId" element={<CarDetails/>}/>
               <Route path="/admin/insurances" element={<InsurancesView/>}/>
               <Route path="/admin/users" element={<UsersView/>}/>
               <Route path="/admin/reservations" element={<ReservationsView />} />
+              <Route path="/admin/reservations/details/:reservationId" element={<ReservationDetails />} />
               <Route path="/admin/maintenance" element={<MaintenanceView />} />
               <Route path="/admin/branches" element={<BranchesView/>}/>
             </Route>

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query"
-import { getAllCars } from "../../api/CarsAPI"
-import DataTable from "../../components/Admin/DataTable"
+import { getAllCars } from "../../../api/CarsAPI"
+import DataTable from "../../../components/Admin/DataTable"
 import { Link } from "react-router-dom"
 
 export default function CarsView() {

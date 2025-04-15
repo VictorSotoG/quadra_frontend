@@ -1,11 +1,11 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminInsuranceSchema } from "../types";
+import { adminInsurancesSchema } from "../types";
 
 export async function getAllInsurances() {
     try {
         const { data } = await api('/insurances');
-        const response = adminInsuranceSchema.safeParse(data)
+        const response = adminInsurancesSchema.safeParse(data)
         if (response.success) {
             return response.data
         }

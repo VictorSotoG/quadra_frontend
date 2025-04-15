@@ -1,4 +1,5 @@
 
+import { TypeOptions } from "react-toastify";
 import { z } from "zod";
 
 /* Vehiculos */
@@ -116,3 +117,40 @@ export const adminBranchSchema = z.array(
 
 export type Branch = z.infer<typeof branchSchema>
 export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>
+
+
+export const reservationSchema = z.object({
+    _id: z.string(),
+    cliente_id: z.number(),
+    vehiculo_id: z.number(),
+    seguro_id: z.number(),
+    fecha_inicio: z.string(),
+    fecha_fin: z.string(),
+    estado: z.string(),
+    alquiler : z.object({
+        monto: z.number(),
+        metodo_pago: z.string(),
+        estado: z.string(),
+        createdAt: z.string()
+    }),
+    createdAt: z.string(),
+    updatedAt: z.string()
+})
+
+export const adminReservationSchema = z.array(
+    reservationSchema.pick({
+        _id: true,
+        cliente_id: true,
+        vehiculo_id: true,
+        seguro_id: true,
+        fecha_inicio: true,
+        fecha_fin: true,
+        estado: true,
+        alquiler: true,
+        createdAt: true,
+        updatedAt: true
+    })
+)
+
+export type Reservation = z.infer<typeof reservationSchema>
+export type ReservationFormData = Pick<Reservation, 'cliente_id' | 'vehiculo_id' | 'seguro_id' | 'fecha_inicio' | 'fecha_fin' | 'estado' | 'alquiler' | 'createdAt' | 'updatedAt'>

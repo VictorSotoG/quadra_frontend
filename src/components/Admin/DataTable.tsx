@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate, useParams } from "react-router-dom";
 import { formateDate } from "../../utils/utils";
 
 type Column = {
@@ -12,6 +12,9 @@ type DataTableProps = {
 };
 
 export default function DataTable({ columns, data }: DataTableProps) {
+    const location = useLocation();
+    const navigate = useNavigate();
+
     return (
         <div className=" bg-slate-50 rounded-lg overflow-hidden border border-gray-300">
             <table className="min-w-full divide-y divide-gray-300">
@@ -37,14 +40,22 @@ export default function DataTable({ columns, data }: DataTableProps) {
                         <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
-                                {col.key.includes('At') && row[col.key] ? (
-                                    formateDate(row[col.key])
-                                ): (
-                                    row[col.key]
-                                )}
+                                    {col.key.includes('At') && row[col.key] ? (
+                                        formateDate(row[col.key]) // Formatea las fechas
+                                    ) : (
+                                        row[col.key] || "N/A" // Muestra "N/A" si el valor es undefined
+                                    )}
                                 </td>
                             ))}
-                            <td className="p-2 flex gap-2 items-center">
+                            <td className="p-2 flex gap-2 justify-center">
+                                <button
+                                    type="button"
+                                    // to={`/admin/${row.}/details/${row.id}`} 
+                                    className="bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
+                                    onClick={() => navigate(location.pathname + `/details/${row.id || row._id}`)}
+                                >
+                                    Detalles
+                                </button>
                                 <Link 
                                     to={'/admin'} 
                                     className="bg-sky-500 hover:bg-sky-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
