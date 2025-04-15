@@ -26,5 +26,6 @@ export default function CarDetails() {
                 <p><strong>Actualizado en:</strong> {data.updatedAt}</p>
             </div>
         </div>
+        
     );
 }
