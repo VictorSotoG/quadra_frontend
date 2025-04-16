@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getCarById } from "../../../api/CarsAPI";
+import { formatCurrency } from "../../../utils/utils";
 
 export default function AdminCarDetails() {
     const params = useParams(); // Obtiene el ID de la URL
@@ -30,29 +31,60 @@ export default function AdminCarDetails() {
 
                     {/* Información del auto */}
                     <div className="p-6">
-                        <h2 className="text-2xl font-semibold text-gray-800 mb-4">{data.modelo}</h2>
-                        <div className="grid grid-cols-2 gap-4">
-                            <p className="text-gray-600">
-                                <strong>Marca:</strong> {data.marca}
+                        <div className="flex justify-between">
+                            <h2 className="text-2xl font-bold text-gray-800 mb-4">{data.modelo}</h2>
+                            <p 
+                                className="text-3xl font-bold text-sky-800 mb-4"
+                            >
+                                <span className="text-lg text-gray-800 font-normal px-2">Precio por dia: </span>
+                                {formatCurrency(data.precio_por_dia)}
                             </p>
-                            <p className="text-gray-600">
-                                <strong>Año:</strong> {data.anio}
-                            </p>
-                            <p className="text-gray-600">
-                                <strong>Color:</strong> {data.color}
-                            </p>
-                            <p className="text-gray-600">
-                                <strong>Tipo:</strong> {data.tipo}
-                            </p>
-                            <p className="text-gray-600">
-                                <strong>Transmisión:</strong> {data.transmision}
-                            </p>
-                            <p className="text-gray-600">
-                                <strong>Puertas:</strong> {data.puertas}
-                            </p>
-                            <p className="text-gray-600">
-                                <strong>Asientos:</strong> {data.asientos}
-                            </p>
+                        </div>
+                        <div className="flex gap-6">
+                            <div className="grid grid-cols-2 bg-green-50 border border-green-300 rounded-md p-4">
+                                <div className="space-y-2">
+                                    <p className="text-gray-600">
+                                        <strong>Marca:</strong> {data.marca}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Año:</strong> {data.anio}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Color:</strong> {data.color}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Tipo:</strong> {data.tipo}
+                                    </p>
+                                </div>
+                                <div className="space-y-2">
+                                    <p className="text-gray-600">
+                                        <strong>Transmisión:</strong> {data.transmision}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Puertas:</strong> {data.puertas}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Asientos:</strong> {data.asientos}
+                                    </p>
+                                    <p className="text-gray-600">
+                                        <strong>Clima:</strong> {data.clima ? 'Con Clima' : 'Sin Clima'}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="flex-1 p-4 space-y-2 bg-sky-50 border border-sky-300 rounded-lg">
+                                <p className="text-gray-600">
+                                    <strong>Tipo:</strong> {data.seguro.tipo}
+                                </p>
+                                <p className="text-gray-600">
+                                    <strong>Cobertura:</strong> {data.seguro.cobertura}
+                                </p>
+                                <p className="text-gray-600">
+                                    <strong>Descripcion:</strong> {data.seguro.descripcion}
+                                </p>
+                                <p className="text-gray-600">
+                                    <strong>Precio:</strong> {formatCurrency(data.seguro.precio)}
+                                </p>
+                            </div>
                         </div>
                     </div>
 

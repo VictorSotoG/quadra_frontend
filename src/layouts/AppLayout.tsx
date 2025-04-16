@@ -9,12 +9,23 @@ export default function AppLayout() {
         <header className="bg-white py-2">
             <div className="max-w-screen-xl mx-auto flex flex-row lg:flex-row justify-between items-center px-4">
                 <div className="w-56">
-                    <Logo/>
+                    <Link
+                      to={'/'}
+                    >
+                      <Logo/>
+                    </Link>
                 </div>
 
                 <nav className="hidden sm:block">
-                  <div className="flex items-center space-x-4">
-                    <a href='/about' >Nosotros</a>
+                  <div className="flex items-center space-x-6">
+                    <Link
+                      to={'/cars'}
+                      className="text-gray-700 font-semibold"
+                    >Reservar</Link>
+                    <a
+                      href='/about'
+                      className="text-gray-700 font-semibold"
+                    >Nosotros</a>
                     <Link to={'/auth/login'} className="flex items-center text-gray-600 text-sm gap-2 font-semibold bg-gray-200 hover:bg-gray-300 transition-colors rounded-md p-2">
                       <UserCircleIcon className="size-8 text-gray-500 "/>
                       Iniciar Sesion / Registrarse

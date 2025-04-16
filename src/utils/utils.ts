@@ -8,3 +8,10 @@ export function formateDate(isoString: string) : string {
     })
     return formatter.format(date)
 }
+
+export function formatCurrency(amount: number) {
+    return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD'
+    }).format(amount)
+}
