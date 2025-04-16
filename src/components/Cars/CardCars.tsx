@@ -18,24 +18,34 @@ export default function CardCars({ car }: CardCarsProps) {
 
             {/* Información del auto */}
             <div className="flex-1 p-6 flex flex-col justify-between">
-                <div>
-                    <h1 className="text-xl font-bold text-gray-800 mb-2">{car.modelo}</h1>
-                    <p className="text-gray-600 mb-1">
-                        <strong>Marca:</strong> {car.marca}
-                    </p>
-                    <p className="text-gray-600 mb-1">
-                        <strong>Año:</strong> {car.anio}
-                    </p>
-                    <p className="text-gray-600 mb-1">
-                        <strong>Color:</strong> {car.color}
-                    </p>
-                    <p className="text-gray-600 mb-1">
-                        <strong>Tipo:</strong> {car.tipo}
-                    </p>
+                <div className="flex w-full">
+                    <div className="w-1/2">
+                        <h1 className="text-xl font-bold text-gray-800 mb-2">{car.modelo}</h1>
+                        <p className="text-gray-600 mb-1">
+                            <strong>Marca:</strong> {car.marca}
+                        </p>
+                        <p className="text-gray-600 mb-1">
+                            <strong>Año:</strong> {car.anio}
+                        </p>
+                        <p className="text-gray-600 mb-1">
+                            <strong>Color:</strong> {car.color}
+                        </p>
+                        <p className="text-gray-600 mb-1">
+                            <strong>Tipo:</strong> {car.tipo}
+                        </p>
+                    </div>
+                    <div className="w-1/2">
+                        <p className="text-gray-600 mb-1">
+                            <strong>Cobertura:</strong> {car.seguro.cobertura}
+                        </p>
+                        <p className="text-gray-600 my-4 text-sm">
+                            {car.seguro.descripcion}
+                        </p>
+                    </div>
                 </div>
 
                 {/* Características adicionales */}
-                <div className="mt-4 grid grid-cols-2 gap-4">
+                <div className="mt-8 grid grid-cols-2 gap-4">
                     <div className="flex items-center gap-2">
                         <img
                             src="/iconos-carros/transmision-manual.png"
@@ -46,11 +56,11 @@ export default function CardCars({ car }: CardCarsProps) {
                     </div>
                     <div className="flex items-center gap-2">
                         <img
-                            src="/iconos-carros/combustible.png"
-                            alt="Combustible"
+                            src="/iconos-carros/clima.png"
+                            alt="clima"
                             width={24}
                         />
-                        <p className="text-sm text-gray-600">{car.combustible}</p>
+                        <p className="text-sm text-gray-600">{car.clima ? 'Clima' : 'Sin Clima'}</p>
                     </div>
                     <div className="flex items-center gap-2">
                         <img
@@ -72,13 +82,19 @@ export default function CardCars({ car }: CardCarsProps) {
             </div>
 
             {/* Botones de acción */}
-            <div className="p-4 flex flex-col gap-2 justify-center items-center bg-gray-50">
-                <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 px-4 rounded-md w-full">
-                    Ver Detalles
-                </button>
-                <button className="bg-green-500 hover:bg-green-600 text-white text-sm py-2 px-4 rounded-md w-full">
-                    Reservar
-                </button>
+            <div className="bg-blue-50 flex flex-col">
+                <div className="text-center p-6">
+                    <p className="font-bold text-blue-600">Precio por dia:</p>
+                    <p>{car.precio_por_dia}</p>
+                </div>
+                <div className="p-4 flex flex-col gap-2 justify-center items-center flex-1">
+                    <button className="bg-blue-500 hover:bg-blue-600 text-white text-sm py-2 px-4 rounded-md w-full">
+                        Ver Detalles
+                    </button>
+                    <button className="bg-green-500 hover:bg-green-600 text-white text-sm py-2 px-4 rounded-md w-full">
+                        Reservar
+                    </button>
+                </div>
             </div>
         </div>
     );

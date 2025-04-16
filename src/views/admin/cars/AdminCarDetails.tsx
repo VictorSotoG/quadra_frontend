@@ -48,9 +48,6 @@ export default function AdminCarDetails() {
                                 <strong>Transmisión:</strong> {data.transmision}
                             </p>
                             <p className="text-gray-600">
-                                <strong>Combustible:</strong> {data.combustible}
-                            </p>
-                            <p className="text-gray-600">
                                 <strong>Puertas:</strong> {data.puertas}
                             </p>
                             <p className="text-gray-600">
