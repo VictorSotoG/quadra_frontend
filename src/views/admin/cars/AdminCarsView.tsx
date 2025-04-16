@@ -3,7 +3,7 @@ import { getAllCars } from "../../../api/CarsAPI"
 import DataTable from "../../../components/Admin/DataTable"
 import { Link } from "react-router-dom"
 
-export default function CarsView() {
+export default function AdminCarsView() {
 
   const columns = [
     { key: 'id', label: 'Id_Vehiculo' },
@@ -15,10 +15,10 @@ export default function CarsView() {
     { key: 'tipo', label: 'Tipo' },
     { key: 'precio_por_dia', label: 'Precio por Dia' },
     { key: 'seguroId', label: 'Seguro' },
-    { key: 'imagen', label: 'Imagen' },
-    { key: 'estado', label: 'Estado' },
-    { key: 'createdAt', label: 'Creado en' },
-    { key: 'updatedAt', label: 'Actualizado en' },
+    // { key: 'imagen', label: 'Imagen' },
+    // { key: 'estado', label: 'Estado' },
+    // { key: 'createdAt', label: 'Creado en' },
+    // { key: 'updatedAt', label: 'Actualizado en' },
   ]
 
   const { data, isLoading } = useQuery({

@@ -8,14 +8,15 @@ import ConfirmAccountView from "./views/auth/ConfirmAccountView";
 import ForgotPasswordView from "./views/auth/ForgotPasswordView";
 import About from "./views/About";
 import AdminLayout from "./layouts/AdminLayout";
-import CarsView from "./views/admin/cars/CarsView";
 import InsurancesView from "./views/admin/InsurancesView";
 import UsersView from "./views/admin/UsersView";
 import ReservationsView from "./views/admin/reservations/ReservationsView";
 import MaintenanceView from "./views/admin/MaintenanceView";
 import BranchesView from "./views/admin/BranchesView";
 import ReservationDetails from "./views/admin/reservations/ReservationDetails";
-import CarDetails from "./views/admin/cars/CarDetails";
+import AdminCarDetails from "./views/admin/cars/AdminCarDetails";
+import AdminCarsView from "./views/admin/cars/AdminCarsView";
+import Cars from "./views/Cars";
 
 export default function Router() {
   return (
@@ -30,11 +31,12 @@ export default function Router() {
             <Route element={<AppLayout/>}>
               <Route path="/" element={<Home />} index />
               <Route path="/about" element={<About />} />
+              <Route path="/cars" element={<Cars />} />
               {/* <Route path="/" element={<Book />} index /> */}
             </Route>
             <Route element={<AdminLayout />}>
-              <Route path="/admin/cars" element={<CarsView/>}/>
-              <Route path="/admin/cars/details/:carId" element={<CarDetails/>}/>
+              <Route path="/admin/cars" element={<AdminCarsView/>}/>
+              <Route path="/admin/cars/details/:carId" element={<AdminCarDetails/>}/>
               <Route path="/admin/insurances" element={<InsurancesView/>}/>
               <Route path="/admin/users" element={<UsersView/>}/>
               <Route path="/admin/reservations" element={<ReservationsView />} />
