@@ -40,7 +40,7 @@ export default function DataTable({ columns, data }: DataTableProps) {
                         <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
-                                    {col.key.includes('At') && row[col.key] ? (
+                                    {col.key.includes('fecha') && row[col.key] ? (
                                         formateDate(row[col.key]) // Formatea las fechas
                                     ) : (
                                         row[col.key] || "N/A" // Muestra "N/A" si el valor es undefined

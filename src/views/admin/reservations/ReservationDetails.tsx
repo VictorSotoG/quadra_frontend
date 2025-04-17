@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import { getReservationById } from "../../../api/ReservationsAPI";
+import { formatCurrency, formateDate } from "../../../utils/utils";
 
 export default function ReservationDetails() {
   const params = useParams(); // Obtiene el ID de la URL
@@ -16,7 +17,7 @@ export default function ReservationDetails() {
 
   if (data)
     return (
-      <div className="p-6 max-w-4xl mx-auto">
+      <div className="p-6 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-sky-700 mb-6 flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -39,9 +40,9 @@ export default function ReservationDetails() {
           {/* Header con estado */}
           <div
             className={`px-6 py-4 ${
-              data.estado === "pendiente"
+              data.estado === "Vehiculo En Proceso de Entrega"
                 ? "bg-amber-100"
-                : data.estado === "pagado"
+                : data.estado === "Vehiculo Entregado"
                 ? "bg-green-100"
                 : "bg-red-100"
             }`}
@@ -52,9 +53,9 @@ export default function ReservationDetails() {
               </span>
               <span
                 className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  data.estado === "pendiente"
+                  data.estado === "Vehiculo En Proceso de Entrega"
                     ? "bg-amber-500 text-white"
-                    : data.estado === "pagado"
+                    : data.estado === "Vehiculo Entregado"
                     ? "bg-green-500 text-white"
                     : "bg-red-500 text-white"
                 }`}
@@ -65,56 +66,72 @@ export default function ReservationDetails() {
           </div>
 
           {/* Cuerpo de la tarjeta */}
-          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Sección izquierda - Información básica */}
-            <div className="space-y-4">
+            <div className="space-y-8">
               <div className="flex items-start">
-                <div className="bg-indigo-100 p-3 rounded-lg mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-indigo-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"
-                    />
-                  </svg>
+                <div className="bg-purple-100 p-3 rounded-lg mr-4">
+                  <img src="/iconos/icono-usuario-purple.png" width={24}/>
                 </div>
-                <div>
+                <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Cliente</h3>
-                  <p className="text-lg font-semibold">ID: {data.cliente_id}</p>
+                  <p className="text-md"><strong>Nombre:</strong> {data.nombre}</p>
+                  <p className="text-md"><strong>Email:</strong> {data.email}</p>
+                  <p className="text-md"><strong>Telefono:</strong> {data.telefono}</p>
                 </div>
               </div>
 
               <div className="flex items-start">
-                <div className="bg-blue-100 p-3 rounded-lg mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-blue-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"
-                    />
-                  </svg>
+                <div className="bg-sky-100 p-3 rounded-lg mr-4">
+                  <img src="/iconos/icono-carro-blue.png" alt="" width={24}/>
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-sm font-medium text-gray-500">Vehiculo</h3>
+                  <div className="flex gap-8">
+                    <div className="space-y-2">
+                      <p className="text-md"><strong>Marca:</strong> {data.vehiculo.marca}</p>
+                      <p className="text-md"><strong>Modelo:</strong> {data.vehiculo.modelo}</p>
+                      <p className="text-md"><strong>Año:</strong> {data.vehiculo.anio}</p>
+                      <p className="text-md"><strong>Color:</strong> {data.vehiculo.color}</p>
+                      <p className="text-md"><strong>Transmision:</strong> {data.vehiculo.transmision}</p>
+                    </div>
+                    <div className="space-y-2">
+                      <p className="text-md"><strong>Tipo:</strong> {data.vehiculo.tipo}</p>
+                      <p className="text-md"><strong>Puertas:</strong> {data.vehiculo.puertas}</p>
+                      <p className="text-md"><strong>Asientos:</strong> {data.vehiculo.asientos}</p>
+                      <p className="text-md"><strong>Clima:</strong> {data.vehiculo.clima ? 'Con Clima' : 'Sin Clima'}</p>
+                      <p className="text-md"><strong>Precio Por Dia:</strong> {formatCurrency(data.vehiculo.precio_por_dia)}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="bg-sky-100 p-3 rounded-lg mr-4">
+                  <img src="/iconos/icono-seguro-sky.png" alt="" width={32}/>
+                </div>
+                <div className="space-y-1">
+                  <h3 className="text-sm font-medium text-gray-500">Seguro</h3>
+                  <p className="text-md"><strong>Tipo:</strong> {data.vehiculo.seguro.tipo}</p>
+                  <p className="text-md"><strong>Cobertura:</strong> {data.vehiculo.seguro.cobertura}</p>
+                  <p className="text-md"><strong>Precio:</strong> {formatCurrency(data.vehiculo.seguro.precio)}</p>
+                  <p className="text-sm"><strong>Descripcion:</strong> {data.vehiculo.seguro.descripcion}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Sección derecha - Información de pago */}
+            <div className="space-y-4">
+            <div className="flex items-start">
+                <div className="bg-green-100 p-3 rounded-lg mr-4 ">
+                  <img src="/iconos/icono-calendario-green.png" alt="" width={24}/>
                 </div>
                 <div>
                   <h3 className="text-sm font-medium text-gray-500">
                     Período de alquiler
                   </h3>
-                  <p className="text-lg font-semibold">
-                    {new Date(data.fecha_inicio).toLocaleDateString()} -{" "}
-                    {new Date(data.fecha_fin).toLocaleDateString()}
+                  <p className="text-md font-semibold">
+                    {formateDate(data.fecha_inicio)} -{" "} {formateDate(data.fecha_fin)}
                   </p>
                   <p className="text-sm text-gray-500">
                     (
@@ -127,42 +144,34 @@ export default function ReservationDetails() {
                   </p>
                 </div>
               </div>
-
-              <div className="flex items-start">
-                <div className="bg-purple-100 p-3 rounded-lg mr-4">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="h-6 w-6 text-purple-600"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"
-                    />
-                  </svg>
-                </div>
-                <div>
-                  <h3 className="text-sm font-medium text-gray-500">Seguro</h3>
-                  <p className="text-lg font-semibold">ID: {data.seguro_id}</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Sección derecha - Información de pago */}
-            <div className="space-y-4">
-              <div className="bg-gradient-to-r from-green-50 to-green-100 p-5 rounded-xl border border-green-200">
-                <h3 className="text-lg font-semibold text-green-800 mb-3">
+              <div 
+                // className="bg-gradient-to-r from-green-50 to-green-100 p-5 rounded-xl border border-green-200">
+                className={`px-4 py-3 rounded-xl font-medium ${
+                        data.alquiler.estado === "No Pagado"
+                          ? "border border-amber-200 bg-amber-50 text-amber-800"
+                          : "border border-green-200 bg-green-100 text-green-800"
+                      }`}>
+                <h3 
+                  className={`text-lg font-semibold mb-3
+                    ${data.alquiler.estado === "No Pagado"
+                      ? "text-amber-800"
+                      : "text-green-800"}
+                  `}
+                >
                   Información de Pago
                 </h3>
                 <div className="space-y-3">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Monto:</span>
-                    <span className="font-bold text-green-700">
-                      ${data.alquiler.monto.toLocaleString()}
+                    <span 
+                      // className="font-bold text-green-700"
+                      className={`text-lg font-semibold
+                        ${data.alquiler.estado === "No Pagado"
+                          ? "text-amber-800"
+                          : "text-green-800"}
+                      `}
+                    >
+                      {formatCurrency(data.alquiler.monto)}
                     </span>
                   </div>
                   <div className="flex justify-between">
@@ -175,19 +184,25 @@ export default function ReservationDetails() {
                     <span className="text-gray-600">Estado:</span>
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
-                        data.alquiler.estado === "pendiente"
-                          ? "bg-amber-100 text-amber-800"
-                          : "bg-green-100 text-green-800"
+                        data.alquiler.estado === "No Pagado"
+                          ? "bg-amber-200 text-amber-800"
+                          : "bg-green-200 text-green-800"
                       }`}
                     >
                       {data.alquiler.estado}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Fecha pago:</span>
-                    <span>
-                      {new Date(data.alquiler.createdAt).toLocaleDateString()}
-                    </span>
+                    {data.alquiler.estado === "No Pagado" ? (
+                      ''
+                    ) : (
+                      <div>
+                        <span className="text-gray-600">Fecha pago:</span>
+                        <span>
+                          {formateDate(data.updatedAt)}
+                        </span>
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

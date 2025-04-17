@@ -7,11 +7,10 @@ export default function ReservationsView() {
 
   const columns = [
     { key: '_id', label: 'Id Reservacion'},
-    { key: 'cliente_id', label: 'Id Cliente' },
-    { key: 'vehiculo_id', label: 'Id Vehiculo' },
+    { key: 'nombre', label: 'Nombre Cliente' },
     { key: 'estado', label: 'Estado Reservacion' },
-    { key: 'createdAt', label: 'Creado en' },
-    { key: 'updatedAt', label: 'Actualizado en' },
+    { key: 'fecha_inicio', label: 'Fecha de Inicio' },
+    { key: 'fecha_fin', label: 'Fecha Entrega' },
   ]
 
 

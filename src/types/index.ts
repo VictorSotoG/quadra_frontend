@@ -132,9 +132,10 @@ export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>
 
 export const reservationSchema = z.object({
     _id: z.string(),
-    cliente_id: z.number(),
+    nombre: z.string(),
+    email: z.string(),
+    telefono: z.string(),
     vehiculo_id: z.number(),
-    seguro_id: z.number(),
     fecha_inicio: z.string(),
     fecha_fin: z.string(),
     estado: z.string(),
@@ -144,6 +145,30 @@ export const reservationSchema = z.object({
         estado: z.string(),
         createdAt: z.string()
     }),
+    vehiculo: z.object({
+        id: z.number(),
+        marca: z.string(),
+        modelo: z.string(),
+        color: z.string(),
+        anio: z.number(),
+        transmision: z.string(),
+        tipo: z.string(),
+        puertas: z.number(),
+        asientos: z.number(),
+        clima: z.boolean(),
+        precio_por_dia: z.number(),
+        seguro: z.object({
+            id: z.number(),
+            tipo: z.string(),
+            cobertura: z.string(),
+            precio: z.number(),
+            descripcion: z.string()
+        }),
+        imagen: z.string(),
+        estado: z.string(),
+        createdAt: z.string(),
+        updatedAt: z.string()
+    }),
     createdAt: z.string(),
     updatedAt: z.string()
 })
@@ -151,9 +176,10 @@ export const reservationSchema = z.object({
 export const adminReservationSchema = z.array(
     reservationSchema.pick({
         _id: true,
-        cliente_id: true,
+        nombre: true,
+        email: true,
+        telefono: true,
         vehiculo_id: true,
-        seguro_id: true,
         fecha_inicio: true,
         fecha_fin: true,
         estado: true,
@@ -164,4 +190,4 @@ export const adminReservationSchema = z.array(
 )
 
 export type Reservation = z.infer<typeof reservationSchema>
-export type ReservationFormData = Pick<Reservation, 'cliente_id' | 'vehiculo_id' | 'seguro_id' | 'fecha_inicio' | 'fecha_fin' | 'estado' | 'alquiler' | 'createdAt' | 'updatedAt'>
+export type ReservationFormData = Pick<Reservation, 'nombre' | 'email' | 'telefono' | 'vehiculo_id' | 'fecha_inicio' | 'fecha_fin' | 'estado' | 'alquiler'>

@@ -17,6 +17,7 @@ import ReservationDetails from "./views/admin/reservations/ReservationDetails";
 import AdminCarDetails from "./views/admin/cars/AdminCarDetails";
 import AdminCarsView from "./views/admin/cars/AdminCarsView";
 import Cars from "./views/Cars";
+import Reserve from "./views/Reserve";
 
 export default function Router() {
   return (
@@ -32,7 +33,7 @@ export default function Router() {
               <Route path="/" element={<Home />} index />
               <Route path="/about" element={<About />} />
               <Route path="/cars" element={<Cars />} />
-              {/* <Route path="/" element={<Book />} index /> */}
+              <Route path="/reserve/:carId" element={<Reserve />}/>
             </Route>
             <Route element={<AdminLayout />}>
               <Route path="/admin/cars" element={<AdminCarsView/>}/>
