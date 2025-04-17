@@ -1,13 +1,24 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminReservationSchema, Reservation, reservationSchema } from "../types";
+import { adminReservationSchema, Reservation, ReservationFormDataType, reservationSchema } from "../types";
 
+
+export async function createReservation(formData : ReservationFormDataType) {
+    try {
+        // console.log(formData)
+        const { data } = await api.post('/reservations', formData)
+        return data
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
 
 export async function getAllReservations() {
     try {
         const { data } = await api('/reservations');
         const response = adminReservationSchema.safeParse(data)
-        console.log(response)
         if (response.success) {
             return response
         }

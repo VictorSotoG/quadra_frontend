@@ -142,8 +142,7 @@ export const reservationSchema = z.object({
     alquiler : z.object({
         monto: z.number(),
         metodo_pago: z.string(),
-        estado: z.string(),
-        createdAt: z.string()
+        estado: z.string()
     }),
     vehiculo: z.object({
         id: z.number(),
@@ -190,4 +189,4 @@ export const adminReservationSchema = z.array(
 )
 
 export type Reservation = z.infer<typeof reservationSchema>
-export type ReservationFormData = Pick<Reservation, 'nombre' | 'email' | 'telefono' | 'vehiculo_id' | 'fecha_inicio' | 'fecha_fin' | 'estado' | 'alquiler'>
+export type ReservationFormDataType = Pick<Reservation, 'nombre' | 'email' | 'telefono' | 'vehiculo_id' | 'fecha_inicio' | 'fecha_fin' >

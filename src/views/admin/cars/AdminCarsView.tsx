@@ -14,7 +14,6 @@ export default function AdminCarsView() {
     { key: 'transmision', label: 'Transmision' },
     { key: 'tipo', label: 'Tipo' },
     { key: 'precio_por_dia', label: 'Precio por Dia' },
-    { key: 'seguroId', label: 'Seguro' },
     // { key: 'imagen', label: 'Imagen' },
     // { key: 'estado', label: 'Estado' },
     // { key: 'createdAt', label: 'Creado en' },

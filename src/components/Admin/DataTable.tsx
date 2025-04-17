@@ -1,5 +1,5 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { formateDate } from "../../utils/utils";
+import { formatCurrency, formateDate } from "../../utils/utils";
 
 type Column = {
     key: string;
@@ -40,11 +40,17 @@ export default function DataTable({ columns, data }: DataTableProps) {
                         <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
-                                    {col.key.includes('fecha') && row[col.key] ? (
-                                        formateDate(row[col.key]) // Formatea las fechas
-                                    ) : (
-                                        row[col.key] || "N/A" // Muestra "N/A" si el valor es undefined
-                                    )}
+                                    {col.key.includes('fecha') && row[col.key] 
+                                        ? ( 
+                                            row[col.key] 
+                                            ? formateDate(row[col.key]) 
+                                            : "Fecha no disponible" 
+                                        ) 
+                                        : ( col.key.includes('precio') 
+                                            ? ( formatCurrency(row[col.key]) )
+                                            : ( row[col.key] || "N/A" ) 
+                                        )
+                                    } 
                                 </td>
                             ))}
                             <td className="p-2 flex gap-2 justify-center">

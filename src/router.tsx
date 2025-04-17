@@ -45,8 +45,6 @@ export default function Router() {
               <Route path="/admin/maintenance" element={<MaintenanceView />} />
               <Route path="/admin/branches" element={<BranchesView/>}/>
             </Route>
-
-            
         </Routes>
     </BrowserRouter>
   )

@@ -160,7 +160,7 @@ export default function ReservationDetails() {
                 >
                   Información de Pago
                 </h3>
-                <div className="space-y-3">
+                <div className="space-y-2">
                   <div className="flex justify-between">
                     <span className="text-gray-600">Monto:</span>
                     <span 
@@ -209,7 +209,7 @@ export default function ReservationDetails() {
 
               <div className="bg-gray-50 p-5 rounded-xl border border-gray-200">
                 <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                  Metadatos
+                  Informacion
                 </h3>
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">

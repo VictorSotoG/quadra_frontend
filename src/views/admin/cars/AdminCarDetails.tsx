@@ -44,45 +44,45 @@ export default function AdminCarDetails() {
                             <div className="grid grid-cols-2 bg-green-50 border border-green-300 rounded-md p-4">
                                 <div className="space-y-2">
                                     <p className="text-gray-600">
-                                        <strong>Marca:</strong> {data.marca}
+                                        <strong className="text-green-600">Marca:</strong> {data.marca}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Año:</strong> {data.anio}
+                                        <strong className="text-green-600">Año:</strong> {data.anio}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Color:</strong> {data.color}
+                                        <strong className="text-green-600">Color:</strong> {data.color}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Tipo:</strong> {data.tipo}
+                                        <strong className="text-green-600">Tipo:</strong> {data.tipo}
                                     </p>
                                 </div>
                                 <div className="space-y-2">
                                     <p className="text-gray-600">
-                                        <strong>Transmisión:</strong> {data.transmision}
+                                        <strong className="text-green-600">Transmisión:</strong> {data.transmision}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Puertas:</strong> {data.puertas}
+                                        <strong className="text-green-600">Puertas:</strong> {data.puertas}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Asientos:</strong> {data.asientos}
+                                        <strong className="text-green-600">Asientos:</strong> {data.asientos}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong>Clima:</strong> {data.clima ? 'Con Clima' : 'Sin Clima'}
+                                        <strong className="text-green-600">Clima:</strong> {data.clima ? 'Con Clima' : 'Sin Clima'}
                                     </p>
                                 </div>
                             </div>
                             <div className="flex-1 p-4 space-y-2 bg-sky-50 border border-sky-300 rounded-lg">
                                 <p className="text-gray-600">
-                                    <strong>Tipo:</strong> {data.seguro.tipo}
+                                    <strong className="text-sky-600">Tipo:</strong> {data.seguro.tipo}
                                 </p>
                                 <p className="text-gray-600">
-                                    <strong>Cobertura:</strong> {data.seguro.cobertura}
+                                    <strong className="text-sky-600">Cobertura:</strong> {data.seguro.cobertura}
                                 </p>
                                 <p className="text-gray-600">
-                                    <strong>Descripcion:</strong> {data.seguro.descripcion}
+                                    <strong className="text-sky-600">Descripcion:</strong> {data.seguro.descripcion}
                                 </p>
                                 <p className="text-gray-600">
-                                    <strong>Precio:</strong> {formatCurrency(data.seguro.precio)}
+                                    <strong className="text-sky-600">Precio:</strong> {formatCurrency(data.seguro.precio)}
                                 </p>
                             </div>
                         </div>
