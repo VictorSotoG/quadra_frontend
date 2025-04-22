@@ -26,8 +26,8 @@ export default function AdminCarDetails() {
         return (
             <>
                 <h1 className="text-3xl font-bold text-gray-800 mx-10 mt-10">Detalles del Auto</h1>
-                <div className="m-10 flex gap-6 bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
-                    <div className="">
+                <div className="p-10 flex gap-6">
+                    <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
                         {/* Imagen del auto */}
                         <div className="bg-sky-100 p-6 flex justify-center">
                             <img
@@ -108,7 +108,7 @@ export default function AdminCarDetails() {
                         </div>
                     </div>
                     {/* Información de mantenimientos */}
-                    <div className=" p-6">
+                    <div className="p-6 bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
                         <h3 className="text-xl font-semibold text-gray-800 mb-4">Mantenimientos</h3>
                         {maintenanceData?.mantenimientos?.length > 0 ? (
                             <table className="min-w-full divide-y divide-gray-300">
