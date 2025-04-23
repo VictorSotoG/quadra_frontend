@@ -108,7 +108,7 @@ export default function AdminCarDetails() {
                         </div>
                     </div>
                     {/* Información de mantenimientos */}
-                    <div className="p-6 bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
+                    <div className="p-6 bg-white shadow-md rounded-lg overflow-hidden border border-gray-300 overflow-y-scroll">
                         <h3 className="text-xl font-semibold text-gray-800 mb-4">Mantenimientos</h3>
                         {maintenanceData?.mantenimientos?.length > 0 ? (
                             <table className="min-w-full divide-y divide-gray-300">
