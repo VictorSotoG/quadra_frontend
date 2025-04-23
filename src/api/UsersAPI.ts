@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminUsersSchema, User } from "../types";
+import { adminUsersSchema, User, userSchema } from "../types";
 
 export async function getAllUsers() {
     try {
@@ -19,7 +19,7 @@ export async function getAllUsers() {
 export async function getUserById(id: User['id']) {
     try {
         const { data } = await api(`/users/${id}`)
-        const response = adminUsersSchema.safeParse(data)
+        const response = userSchema.safeParse(data)
         if (response.success) {
             return response.data
         }

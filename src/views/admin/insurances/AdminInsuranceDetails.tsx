@@ -1,6 +1,6 @@
 
 
-export default function InsuranceDetails() {
+export default function AdminInsuranceDetails() {
   return (
     <div>InsuranceDetails</div>
   )

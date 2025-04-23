@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import DataTable from "../../components/Admin/DataTable";
-import { getAllBranches } from "../../api/BranchesAPI";
 import { Link } from "react-router-dom";
+import DataTable from "../../../components/Admin/DataTable";
+import { getAllBranches } from "../../../api/BranchesAPI";
 
-export default function BranchesView() {
+export default function AdminBranchesView() {
 
   const columns = [
     { key: 'id', label: 'Id_Sucursal' },
@@ -14,20 +14,23 @@ export default function BranchesView() {
     { key: 'updatedAt', label: 'Actualizado en' },
   ]
 
-  const { data } = useQuery({
+  const { data: brancesData, isLoading, isError } = useQuery({
     queryKey: ['branches'],
     queryFn: getAllBranches
   })
 
+  if (isLoading) return <p className="mt-10 text-center text-lg font-semibold">Cargando...</p>;
+  if (isError) return <p className="mt-10 text-center text-lg font-semibold text-red-500">Error al cargar las Sucursales.</p>;
 
-  if(data) return (
+
+  if(brancesData) return (
     <div className="px-6">
       <div className='p-4 font-semibold text-2xl'>Sucursales</div>
       <Link
         to={'/admin/branches/create'}
         className="inline-block mb-4 px-6 py-2 bg-sky-600 hover:bg-sky-800 text-white rounded-md"
       >Agregar Sucursal</Link>
-      <DataTable columns={columns} data={data} />
+      <DataTable columns={columns} data={brancesData} />
     </div>
   )
 }

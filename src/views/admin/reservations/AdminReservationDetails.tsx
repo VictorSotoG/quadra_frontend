@@ -3,19 +3,19 @@ import { useQuery } from "@tanstack/react-query";
 import { getReservationById } from "../../../api/ReservationsAPI";
 import { formatCurrency, formateDate } from "../../../utils/utils";
 
-export default function ReservationDetails() {
+export default function AdminReservationDetails() {
   const params = useParams(); // Obtiene el ID de la URL
   const reservationId = params.reservationId!;
 
-  const { data, isLoading, isError } = useQuery({
+  const { data: reservationData, isLoading, isError } = useQuery({
     queryKey: ["reservation", reservationId],
     queryFn: () => getReservationById(reservationId), // Llama a la API para obtener los detalles
   });
 
-  if (isLoading) return <p>Cargando...</p>;
-  if (isError) return <p>Error al cargar los detalles de la reserva.</p>;
+  if (isLoading) return <p className="mt-10 text-center text-lg font-semibold">Cargando...</p>;
+  if (isError) return <p className="mt-10 text-center text-lg font-semibold text-red-500">Error al cargar los detalles de las reservas.</p>;
 
-  if (data)
+  if (reservationData) {
     return (
       <div className="p-6 max-w-6xl mx-auto">
         <h1 className="text-3xl font-bold text-sky-700 mb-6 flex items-center">
@@ -40,27 +40,27 @@ export default function ReservationDetails() {
           {/* Header con estado */}
           <div
             className={`px-6 py-4 ${
-              data.estado === "Vehiculo En Proceso de Entrega"
+              reservationData.estado === "Vehiculo En Proceso de Entrega"
                 ? "bg-amber-100"
-                : data.estado === "Vehiculo Entregado"
+                : reservationData.estado === "Vehiculo Entregado"
                 ? "bg-green-100"
                 : "bg-red-100"
             }`}
           >
             <div className="flex justify-between items-center">
               <span className="text-lg font-semibold text-gray-800">
-                Reserva #{data._id}
+                Reserva #{reservationData._id}
               </span>
               <span
                 className={`px-3 py-1 rounded-full text-sm font-medium ${
-                  data.estado === "Vehiculo En Proceso de Entrega"
+                  reservationData.estado === "Vehiculo En Proceso de Entrega"
                     ? "bg-amber-500 text-white"
-                    : data.estado === "Vehiculo Entregado"
+                    : reservationData.estado === "Vehiculo Entregado"
                     ? "bg-green-500 text-white"
                     : "bg-red-500 text-white"
                 }`}
               >
-                {data.estado}
+                {reservationData.estado}
               </span>
             </div>
           </div>
@@ -75,9 +75,9 @@ export default function ReservationDetails() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Cliente</h3>
-                  <p className="text-md"><strong>Nombre:</strong> {data.nombre}</p>
-                  <p className="text-md"><strong>Email:</strong> {data.email}</p>
-                  <p className="text-md"><strong>Telefono:</strong> {data.telefono}</p>
+                  <p className="text-md"><strong>Nombre:</strong> {reservationData.nombre}</p>
+                  <p className="text-md"><strong>Email:</strong> {reservationData.email}</p>
+                  <p className="text-md"><strong>Telefono:</strong> {reservationData.telefono}</p>
                 </div>
               </div>
 
@@ -89,18 +89,18 @@ export default function ReservationDetails() {
                   <h3 className="text-sm font-medium text-gray-500">Vehiculo</h3>
                   <div className="flex gap-8">
                     <div className="space-y-2">
-                      <p className="text-md"><strong>Marca:</strong> {data.vehiculo.marca}</p>
-                      <p className="text-md"><strong>Modelo:</strong> {data.vehiculo.modelo}</p>
-                      <p className="text-md"><strong>Año:</strong> {data.vehiculo.anio}</p>
-                      <p className="text-md"><strong>Color:</strong> {data.vehiculo.color}</p>
-                      <p className="text-md"><strong>Transmision:</strong> {data.vehiculo.transmision}</p>
+                      <p className="text-md"><strong>Marca:</strong> {reservationData.vehiculo.marca}</p>
+                      <p className="text-md"><strong>Modelo:</strong> {reservationData.vehiculo.modelo}</p>
+                      <p className="text-md"><strong>Año:</strong> {reservationData.vehiculo.anio}</p>
+                      <p className="text-md"><strong>Color:</strong> {reservationData.vehiculo.color}</p>
+                      <p className="text-md"><strong>Transmision:</strong> {reservationData.vehiculo.transmision}</p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-md"><strong>Tipo:</strong> {data.vehiculo.tipo}</p>
-                      <p className="text-md"><strong>Puertas:</strong> {data.vehiculo.puertas}</p>
-                      <p className="text-md"><strong>Asientos:</strong> {data.vehiculo.asientos}</p>
-                      <p className="text-md"><strong>Clima:</strong> {data.vehiculo.clima ? 'Con Clima' : 'Sin Clima'}</p>
-                      <p className="text-md"><strong>Precio Por Dia:</strong> {formatCurrency(data.vehiculo.precio_por_dia)}</p>
+                      <p className="text-md"><strong>Tipo:</strong> {reservationData.vehiculo.tipo}</p>
+                      <p className="text-md"><strong>Puertas:</strong> {reservationData.vehiculo.puertas}</p>
+                      <p className="text-md"><strong>Asientos:</strong> {reservationData.vehiculo.asientos}</p>
+                      <p className="text-md"><strong>Clima:</strong> {reservationData.vehiculo.clima ? 'Con Clima' : 'Sin Clima'}</p>
+                      <p className="text-md"><strong>Precio Por Dia:</strong> {formatCurrency(reservationData.vehiculo.precio_por_dia)}</p>
                     </div>
                   </div>
                 </div>
@@ -112,10 +112,10 @@ export default function ReservationDetails() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Seguro</h3>
-                  <p className="text-md"><strong>Tipo:</strong> {data.vehiculo.seguro.tipo}</p>
-                  <p className="text-md"><strong>Cobertura:</strong> {data.vehiculo.seguro.cobertura}</p>
-                  <p className="text-md"><strong>Precio:</strong> {formatCurrency(data.vehiculo.seguro.precio)}</p>
-                  <p className="text-sm"><strong>Descripcion:</strong> {data.vehiculo.seguro.descripcion}</p>
+                  <p className="text-md"><strong>Tipo:</strong> {reservationData.vehiculo.seguro.tipo}</p>
+                  <p className="text-md"><strong>Cobertura:</strong> {reservationData.vehiculo.seguro.cobertura}</p>
+                  <p className="text-md"><strong>Precio:</strong> {formatCurrency(reservationData.vehiculo.seguro.precio)}</p>
+                  <p className="text-sm"><strong>Descripcion:</strong> {reservationData.vehiculo.seguro.descripcion}</p>
                 </div>
               </div>
             </div>
@@ -131,13 +131,13 @@ export default function ReservationDetails() {
                     Período de alquiler
                   </h3>
                   <p className="text-md font-semibold">
-                    {formateDate(data.fecha_inicio)} -{" "} {formateDate(data.fecha_fin)}
+                    {formateDate(reservationData.fecha_inicio)} -{" "} {formateDate(reservationData.fecha_fin)}
                   </p>
                   <p className="text-sm text-gray-500">
                     (
                     {Math.floor(
-                      (new Date(data.fecha_fin).getTime() -
-                        new Date(data.fecha_inicio).getTime()) /
+                      (new Date(reservationData.fecha_fin).getTime() -
+                        new Date(reservationData.fecha_inicio).getTime()) /
                         (1000 * 60 * 60 * 24)
                     )}{" "}
                     días)
@@ -147,13 +147,13 @@ export default function ReservationDetails() {
               <div 
                 // className="bg-gradient-to-r from-green-50 to-green-100 p-5 rounded-xl border border-green-200">
                 className={`px-4 py-3 rounded-xl font-medium ${
-                        data.alquiler.estado === "No Pagado"
+                        reservationData.alquiler.estado === "No Pagado"
                           ? "border border-amber-200 bg-amber-50 text-amber-800"
                           : "border border-green-200 bg-green-100 text-green-800"
                       }`}>
                 <h3 
                   className={`text-lg font-semibold mb-3
-                    ${data.alquiler.estado === "No Pagado"
+                    ${reservationData.alquiler.estado === "No Pagado"
                       ? "text-amber-800"
                       : "text-green-800"}
                   `}
@@ -166,40 +166,40 @@ export default function ReservationDetails() {
                     <span 
                       // className="font-bold text-green-700"
                       className={`text-lg font-semibold
-                        ${data.alquiler.estado === "No Pagado"
+                        ${reservationData.alquiler.estado === "No Pagado"
                           ? "text-amber-800"
                           : "text-green-800"}
                       `}
                     >
-                      {formatCurrency(data.alquiler.monto)}
+                      {formatCurrency(reservationData.alquiler.monto)}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Método:</span>
                     <span className="font-medium capitalize">
-                      {data.alquiler.metodo_pago}
+                      {reservationData.alquiler.metodo_pago}
                     </span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-gray-600">Estado:</span>
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
-                        data.alquiler.estado === "No Pagado"
+                        reservationData.alquiler.estado === "No Pagado"
                           ? "bg-amber-200 text-amber-800"
                           : "bg-green-200 text-green-800"
                       }`}
                     >
-                      {data.alquiler.estado}
+                      {reservationData.alquiler.estado}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    {data.alquiler.estado === "No Pagado" ? (
+                    {reservationData.alquiler.estado === "No Pagado" ? (
                       ''
                     ) : (
                       <div>
                         <span className="text-gray-600">Fecha pago:</span>
                         <span>
-                          {formateDate(data.updatedAt)}
+                          {formateDate(reservationData.updatedAt)}
                         </span>
                       </div>
                     )}
@@ -214,11 +214,11 @@ export default function ReservationDetails() {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Creado:</span>
-                    <span>{new Date(data.createdAt).toLocaleString()}</span>
+                    <span>{new Date(reservationData.createdAt).toLocaleString()}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span className="text-gray-500">Actualizado:</span>
-                    <span>{new Date(data.updatedAt).toLocaleString()}</span>
+                    <span>{new Date(reservationData.updatedAt).toLocaleString()}</span>
                   </div>
                 </div>
               </div>
@@ -248,4 +248,6 @@ export default function ReservationDetails() {
         </div>
       </div>
     );
+  }
+  return null;
 }
