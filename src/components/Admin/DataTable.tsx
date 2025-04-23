@@ -40,15 +40,18 @@ export default function DataTable({ columns, data }: DataTableProps) {
                         <tr key={i} className="odd:bg-slate-200">
                             {columns.map((col) => (
                                 <td key={col.key} className="p-2 border">
-                                    {col.key.includes('fecha') && row[col.key] 
+                                    {col.key.includes('fecha') || col.key.includes('At') && row[col.key] 
                                         ? ( 
                                             row[col.key] 
                                             ? formateDate(row[col.key]) 
                                             : "Fecha no disponible" 
                                         ) 
-                                        : ( col.key.includes('precio') 
-                                            ? ( formatCurrency(row[col.key]) )
-                                            : ( row[col.key] || "N/A" ) 
+                                        : ( col.key.includes('confirmado')
+                                            ? ( row[col.key] ? 'Si' : 'No')
+                                            : ( col.key.includes('precio')
+                                                ? ( formatCurrency(row[col.key]) )
+                                                : ( row[col.key] || "N/A" ) 
+                                            )
                                         )
                                     } 
                                 </td>

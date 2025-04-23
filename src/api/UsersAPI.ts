@@ -6,9 +6,8 @@ export async function getAllUsers() {
     try {
         const { data } = await api('/users');
         const response = adminUsersSchema.safeParse(data)
-        console.log(response)
         if (response.success) {
-            return data
+            return response.data
         }
     } catch (error) {
         if (isAxiosError(error) && error.response) {

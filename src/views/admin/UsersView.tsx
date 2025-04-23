@@ -11,10 +11,7 @@ export default function UsersView() {
     { key: 'apellido', label: 'Apellido' },
     { key: 'email', label: 'Email' },
     { key: 'role', label: 'Rol' },
-    { key: 'imagen', label: 'Imagen' },
     { key: 'confirmado', label: 'Confirmado' },
-    { key: 'createdAt', label: 'Creado en' },
-    { key: 'updatedAt', label: 'Actualizado en' },
   ]
 
   const { data } = useQuery({
