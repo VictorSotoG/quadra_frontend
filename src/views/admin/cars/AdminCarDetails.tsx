@@ -19,8 +19,8 @@ export default function AdminCarDetails() {
         queryFn: () => getMaintenancesByVehicleId(carId),
     });
 
-    if (isLoading) return <p className="text-center text-lg">Cargando...</p>;
-    if (isError) return <p className="text-center text-lg text-red-500">Error al cargar los detalles del auto.</p>;
+    if (isLoading && isMaintenanceLoading) return <p className="text-center text-lg">Cargando...</p>;
+    if (isError && isMaintenanceError) return <p className="text-center text-lg text-red-500">Error al cargar los detalles del auto.</p>;
 
     if (data) {
         return (

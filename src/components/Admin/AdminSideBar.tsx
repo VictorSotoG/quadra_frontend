@@ -15,7 +15,6 @@ const adminNavigation: AdminNavegation = [
   {url: '/admin/insurances', text: 'Seguros', icon: "ShieldCheckIcon", blank: false},
   {url: '/admin/users', text: 'Usuarios', icon: "UserIcon", blank: false},
   {url: '/admin/reservations', text: 'Reservaciones', icon: "CalendarIcon", blank: false},
-  {url: '/admin/maintenance', text: 'Mantenimientos', icon: "WrenchIcon", blank: false},
   {url: '/admin/branches', text: 'Sucursales', icon: "BuildingStorefrontIcon", blank: false}
 ]
 
