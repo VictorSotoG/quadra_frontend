@@ -8,7 +8,7 @@ export default function AdminCarDetails() {
     const params = useParams(); // Obtiene el ID de la URL
     const carId = +params.carId!;
 
-    const { data, isLoading, isError } = useQuery({
+    const { data: carData, isLoading: isCarLoading, isError: isCarError } = useQuery({
         queryKey: ['car', carId],
         queryFn: () => getCarById(carId), // Llama a la API para obtener los detalles
     });
@@ -19,10 +19,10 @@ export default function AdminCarDetails() {
         queryFn: () => getMaintenancesByVehicleId(carId),
     });
 
-    if (isLoading && isMaintenanceLoading) return <p className="text-center text-lg">Cargando...</p>;
-    if (isError && isMaintenanceError) return <p className="text-center text-lg text-red-500">Error al cargar los detalles del auto.</p>;
+    if (isCarLoading && isMaintenanceLoading) return <p className="text-center text-lg">Cargando...</p>;
+    if (isCarError && isMaintenanceError) return <p className="text-center text-lg text-red-500">Error al cargar los detalles del auto.</p>;
 
-    if (data) {
+    if (carData) {
         return (
             <>
                 <h1 className="text-3xl font-bold text-gray-800 mx-10 mt-10">Detalles del Auto</h1>
@@ -31,8 +31,8 @@ export default function AdminCarDetails() {
                         {/* Imagen del auto */}
                         <div className="bg-sky-100 p-6 flex justify-center">
                             <img
-                                src={`/autos/${data.imagen}.png`}
-                                alt={data.modelo}
+                                src={`/autos/${carData.imagen}.png`}
+                                alt={carData.modelo}
                                 className="max-h-60 object-contain"
                             />
                         </div>
@@ -40,57 +40,57 @@ export default function AdminCarDetails() {
                         {/* Información del auto */}
                         <div className="p-6">
                             <div className="flex justify-between">
-                                <h2 className="text-2xl font-bold text-gray-800 mb-4">{data.modelo}</h2>
+                                <h2 className="text-2xl font-bold text-gray-800 mb-4">{carData.modelo}</h2>
                                 <p 
                                     className="text-3xl font-bold text-sky-800 mb-4"
                                 >
                                     <span className="text-lg text-gray-800 font-normal px-2">Precio por dia: </span>
-                                    {formatCurrency(data.precio_por_dia)}
+                                    {formatCurrency(carData.precio_por_dia)}
                                 </p>
                             </div>
                             <div className="flex gap-6">
                                 <div className="grid grid-cols-2  p-4 border-r border-gray-300">
                                     <div className="space-y-2">
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Marca:</strong> {data.marca}
+                                            <strong className="text-gray-600">Marca:</strong> {carData.marca}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Año:</strong> {data.anio}
+                                            <strong className="text-gray-600">Año:</strong> {carData.anio}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Color:</strong> {data.color}
+                                            <strong className="text-gray-600">Color:</strong> {carData.color}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Tipo:</strong> {data.tipo}
+                                            <strong className="text-gray-600">Tipo:</strong> {carData.tipo}
                                         </p>
                                     </div>
                                     <div className="space-y-2">
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Transmisión:</strong> {data.transmision}
+                                            <strong className="text-gray-600">Transmisión:</strong> {carData.transmision}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Puertas:</strong> {data.puertas}
+                                            <strong className="text-gray-600">Puertas:</strong> {carData.puertas}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Asientos:</strong> {data.asientos}
+                                            <strong className="text-gray-600">Asientos:</strong> {carData.asientos}
                                         </p>
                                         <p className="text-gray-600">
-                                            <strong className="text-gray-600">Clima:</strong> {data.clima ? 'Con Clima' : 'Sin Clima'}
+                                            <strong className="text-gray-600">Clima:</strong> {carData.clima ? 'Con Clima' : 'Sin Clima'}
                                         </p>
                                     </div>
                                 </div>
                                 <div className="flex-1 p-4 space-y-2  rounded-lg">
                                     <p className="text-gray-600">
-                                        <strong className="text-gray-600">Tipo:</strong> {data.seguro.tipo}
+                                        <strong className="text-gray-600">Tipo:</strong> {carData.seguro.tipo}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong className="text-gray-600">Cobertura:</strong> {data.seguro.cobertura}
+                                        <strong className="text-gray-600">Cobertura:</strong> {carData.seguro.cobertura}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong className="text-gray-600">Descripcion:</strong> {data.seguro.descripcion}
+                                        <strong className="text-gray-600">Descripcion:</strong> {carData.seguro.descripcion}
                                     </p>
                                     <p className="text-gray-600">
-                                        <strong className="text-gray-600">Precio:</strong> {formatCurrency(data.seguro.precio)}
+                                        <strong className="text-gray-600">Precio:</strong> {formatCurrency(carData.seguro.precio)}
                                     </p>
                                 </div>
                             </div>
@@ -100,10 +100,10 @@ export default function AdminCarDetails() {
                         <div className="bg-gray-200 p-6">
                             <h3 className="text-xl font-semibold text-gray-800 mb-4">Información Adicional</h3>
                             <p className="text-gray-600 mb-2">
-                                <strong>Creado en:</strong> {new Date(data.createdAt).toLocaleDateString()}
+                                <strong>Creado en:</strong> {new Date(carData.createdAt).toLocaleDateString()}
                             </p>
                             <p className="text-gray-600">
-                                <strong>Actualizado en:</strong> {new Date(data.updatedAt).toLocaleDateString()}
+                                <strong>Actualizado en:</strong> {new Date(carData.updatedAt).toLocaleDateString()}
                             </p>
                         </div>
                     </div>
