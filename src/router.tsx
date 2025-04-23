@@ -9,7 +9,6 @@ import ForgotPasswordView from "./views/auth/ForgotPasswordView";
 import About from "./views/About";
 import AdminLayout from "./layouts/AdminLayout";
 import InsurancesView from "./views/admin/InsurancesView";
-import UsersView from "./views/admin/UsersView";
 import ReservationsView from "./views/admin/reservations/ReservationsView";
 import BranchesView from "./views/admin/BranchesView";
 import ReservationDetails from "./views/admin/reservations/ReservationDetails";
@@ -18,6 +17,7 @@ import AdminCarsView from "./views/admin/cars/AdminCarsView";
 import Cars from "./views/Cars";
 import Reserve from "./views/Reserve";
 import InsuranceDetails from "./views/admin/insurances/InsuranceDetails";
+import AdminUsersView from "./views/admin/users/AdminUsersView";
 
 export default function Router() {
   return (
@@ -40,7 +40,7 @@ export default function Router() {
               <Route path="/admin/cars/details/:carId" element={<AdminCarDetails/>}/>
               <Route path="/admin/insurances" element={<InsurancesView/>}/>
               <Route path="/admin/insurances/details/:insuranceId" element={<InsuranceDetails />} />
-              <Route path="/admin/users" element={<UsersView/>}/>
+              <Route path="/admin/users" element={<AdminUsersView/>}/>
               <Route path="/admin/reservations" element={<ReservationsView />} />
               <Route path="/admin/reservations/details/:reservationId" element={<ReservationDetails />} />
               <Route path="/admin/branches" element={<BranchesView/>}/>

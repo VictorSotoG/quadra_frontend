@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query"
-import { getAllUsers } from "../../api/UsersAPI"
-import DataTable from "../../components/Admin/DataTable"
 import { Link } from "react-router-dom"
+import DataTable from "../../../components/Admin/DataTable"
+import { getAllUsers } from "../../../api/UsersAPI"
 
-export default function UsersView() {
+export default function AdminUsersView() {
 
   const columns = [
     { key: 'id', label: 'Id_Usuario' },
