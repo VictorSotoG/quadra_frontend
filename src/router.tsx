@@ -42,7 +42,6 @@ export default function Router() {
               <Route path="/admin/users" element={<UsersView/>}/>
               <Route path="/admin/reservations" element={<ReservationsView />} />
               <Route path="/admin/reservations/details/:reservationId" element={<ReservationDetails />} />
-              <Route path="/admin/maintenance" element={<MaintenanceView />} />
               <Route path="/admin/branches" element={<BranchesView/>}/>
             </Route>
         </Routes>
