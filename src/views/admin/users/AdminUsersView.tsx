@@ -8,7 +8,6 @@ export default function AdminUsersView() {
   const columns = [
     { key: 'id', label: 'Id_Usuario' },
     { key: 'nombre', label: 'Nombre' },
-    { key: 'apellido', label: 'Apellido' },
     { key: 'email', label: 'Email' },
     { key: 'role', label: 'Rol' },
     { key: 'confirmado', label: 'Confirmado' },

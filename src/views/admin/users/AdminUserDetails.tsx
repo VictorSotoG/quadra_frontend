@@ -26,20 +26,16 @@ export default function AdminUserDetails() {
                             <div className="w-1/3 flex justify-center items-center">
                                 <img
                                     src={`/usuarios/${userData.imagen}`}
-                                    alt={`${userData.nombre} ${userData.apellido}`}
+                                    alt={`${userData.nombre}`}
                                     className="w-64 h-64 rounded-full object-cover border border-gray-300"
                                 />
                             </div>
-
-                            <div>
-                                {/* Información del usuario */}
-                                <div className="flex-1">
-                                    <div className="grid grid-cols-2 gap-4">
+                            {/* Información del usuario */}
+                            <div className="flex-1">
+                                <div className="">
+                                    <div className="space-y-2">
                                         <p className="text-gray-600">
                                             <strong className="text-gray-800">Nombre:</strong> {userData.nombre}
-                                        </p>
-                                        <p className="text-gray-600">
-                                            <strong className="text-gray-800">Apellido:</strong> {userData.apellido}
                                         </p>
                                         <p className="text-gray-600">
                                             <strong className="text-gray-800">Correo Electrónico:</strong> {userData.email}
