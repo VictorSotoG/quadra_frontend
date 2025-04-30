@@ -57,6 +57,8 @@ export default function DataTable({ columns, data }: DataTableProps) {
                                 </td>
                             ))}
                             <td className="p-2 flex gap-2 justify-center">
+                                {/* Agregar logica para que no muestre el boton de detalles en caso de que sea
+                                    informacion de Seguros y Sucursales */}
                                 <button
                                     type="button"
                                     // to={`/admin/${row.}/details/${row.id}`} 

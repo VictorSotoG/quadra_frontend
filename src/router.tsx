@@ -19,6 +19,7 @@ import AdminInsurancesView from "./views/admin/insurances/AdminInsurancesView";
 import AdminInsuranceDetails from "./views/admin/insurances/AdminInsuranceDetails";
 import AdminReservationsView from "./views/admin/reservations/AdminReservationsView";
 import AdminReservationDetails from "./views/admin/reservations/AdminReservationDetails";
+import AdminCreateInsuranceView from "./views/admin/insurances/AdminCreateInsuranceView";
 
 export default function Router() {
   return (
@@ -40,6 +41,7 @@ export default function Router() {
               <Route path="/admin/cars" element={<AdminCarsView/>}/>
               <Route path="/admin/cars/details/:carId" element={<AdminCarDetails/>}/>
               <Route path="/admin/insurances" element={<AdminInsurancesView/>}/>
+              <Route path="/admin/insurances/create" element={<AdminCreateInsuranceView />} />
               <Route path="/admin/insurances/details/:insuranceId" element={<AdminInsuranceDetails />} />
               <Route path="/admin/users" element={<AdminUsersView/>}/>
               <Route path="/admin/users/details/:userId" element={<AdminUserDetails />} />
