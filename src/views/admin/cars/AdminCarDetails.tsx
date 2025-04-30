@@ -25,15 +25,15 @@ export default function AdminCarDetails() {
     if (carData) {
         return (
             <>
-                <h1 className="text-3xl font-bold text-gray-800 mx-10 mt-10">Detalles del Auto</h1>
-                <div className="p-10 flex gap-6">
+                <h1 className="text-3xl font-bold text-gray-800 mx-6 mt-6">Detalles del Auto</h1>
+                <div className="p-6 flex gap-6">
                     <div className="bg-white shadow-md rounded-lg overflow-hidden border border-gray-300">
                         {/* Imagen del auto */}
-                        <div className="bg-sky-100 p-6 flex justify-center">
+                        <div className="bg-sky-100 p-2 flex justify-center">
                             <img
                                 src={`/autos/${carData.imagen}.png`}
                                 alt={carData.modelo}
-                                className="max-h-60 object-contain"
+                                className="max-h-40 object-contain"
                             />
                         </div>
 
@@ -42,7 +42,7 @@ export default function AdminCarDetails() {
                             <div className="flex justify-between">
                                 <h2 className="text-2xl font-bold text-gray-800 mb-4">{carData.modelo}</h2>
                                 <p 
-                                    className="text-3xl font-bold text-sky-800 mb-4"
+                                    className="text-2xl font-bold text-sky-800 mb-4"
                                 >
                                     <span className="text-lg text-gray-800 font-normal px-2">Precio por dia: </span>
                                     {formatCurrency(carData.precio_por_dia)}
@@ -79,7 +79,7 @@ export default function AdminCarDetails() {
                                         </p>
                                     </div>
                                 </div>
-                                <div className="flex-1 p-4 space-y-2  rounded-lg">
+                                <div className="flex-1 p-4 space-y-2 rounded-lg">
                                     <p className="text-gray-600">
                                         <strong className="text-gray-600">Tipo:</strong> {carData.seguro.tipo}
                                     </p>
@@ -97,9 +97,8 @@ export default function AdminCarDetails() {
                         </div>
 
                         {/* Información adicional */}
-                        <div className="bg-gray-200 p-6">
-                            <h3 className="text-xl font-semibold text-gray-800 mb-4">Información Adicional</h3>
-                            <p className="text-gray-600 mb-2">
+                        <div className="bg-gray-200 p-4 flex justify-center gap-8">
+                            <p className="text-gray-600 mb-1">
                                 <strong>Creado en:</strong> {new Date(carData.createdAt).toLocaleDateString()}
                             </p>
                             <p className="text-gray-600">

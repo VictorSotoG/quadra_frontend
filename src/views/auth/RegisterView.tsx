@@ -3,18 +3,18 @@ import { Link } from "react-router-dom";
 
 export default function RegisterView() {
 
-  const initialValues: UserLoginForm = {
-    name: "",
-    email: "",
-    password: "",
-    password_confirmation: ""
-  }
+    const initialValues: UserLoginForm = {
+        name: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+    }
 
-  const { register, handleSubmit, watch, reset, formState: {errors} } = useForm({ defaultValues: initialValues})
+    const { register, handleSubmit, watch, reset, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-  const handleRegister = (formData: UserLoginForm) => {
+    const handleRegister = (formData: UserLoginForm) => {
 
-  }
+    }
 
     return (
         <>
