@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { BranchFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
 
-export default function AdminCreateInsuranceView() {
+export default function AdminCreateBranchView() {
 
     const initialValues : BranchFormData = {
         nombre: '',
@@ -19,7 +19,7 @@ export default function AdminCreateInsuranceView() {
     return (
         <>
             <div className=" max-w-2xl mx-auto p-10">
-                <h2 className="text-2xl font-bold mb-8 text-gray-700">Crear un Nuevo Seguro</h2>
+                <h2 className="text-2xl font-bold mb-8 text-gray-700">Dar de alta Nueva Sucursal</h2>
                 <div className="bg-white p-6 rounded-lg">
                     <form 
                         className="w-full"
