@@ -20,7 +20,8 @@ import AdminInsuranceDetails from "./views/admin/insurances/AdminInsuranceDetail
 import AdminReservationsView from "./views/admin/reservations/AdminReservationsView";
 import AdminReservationDetails from "./views/admin/reservations/AdminReservationDetails";
 import AdminCreateInsuranceView from "./views/admin/insurances/AdminCreateInsuranceView";
-import AdminCreateBranchView from "./views/admin/branches/AdminCreateBranchView";
+import AdminBranchesCreateView from "./views/admin/branches/AdminBranchesCreateView";
+import AdminBranchesEditView from "./views/admin/branches/AdminBranchesEditView";
 
 export default function Router() {
   return (
@@ -49,7 +50,8 @@ export default function Router() {
               <Route path="/admin/reservations" element={<AdminReservationsView />} />
               <Route path="/admin/reservations/details/:reservationId" element={<AdminReservationDetails />} />
               <Route path="/admin/branches" element={<AdminBranchesView/>}/>
-              <Route path="/admin/branches/create" element={<AdminCreateBranchView />}/>
+              <Route path="/admin/branches/create" element={<AdminBranchesCreateView />}/>
+              <Route path="/admin/branches/edit/:branchId" element={<AdminBranchesEditView />}/>
             </Route>
         </Routes>
     </BrowserRouter>

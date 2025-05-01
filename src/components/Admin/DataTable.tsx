@@ -67,10 +67,14 @@ export default function DataTable({ columns, data }: DataTableProps) {
                                 >
                                     Detalles
                                 </button>
-                                <Link 
-                                    to={'/admin'} 
-                                    className="bg-sky-500 hover:bg-sky-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
-                                >Editar</Link>
+                                <button
+                                    type="button"
+                                    // to={`/admin/${row.}/details/${row.id}`} 
+                                    className="bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
+                                    onClick={() => navigate(location.pathname + `/edit/${row.id || row._id}`)}
+                                >
+                                    Editar
+                                </button>
                                 <Link 
                                     to={'/'} 
                                     className="bg-red-500 hover:bg-red-600 transition-colors text-white text-sm py-1 px-4 rounded-md"

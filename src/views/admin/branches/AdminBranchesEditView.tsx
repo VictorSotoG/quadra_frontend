@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { BranchFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
 
-export default function AdminCreateBranchView() {
+export default function AdminBranchesEditView() {
 
     const initialValues : BranchFormData = {
         nombre: '',
@@ -19,7 +19,7 @@ export default function AdminCreateBranchView() {
     return (
         <>
             <div className=" max-w-2xl mx-auto p-10">
-                <h2 className="text-2xl font-bold mb-8 text-gray-700">Dar de alta Nueva Sucursal</h2>
+                <h2 className="text-2xl font-bold mb-8 text-gray-700">Editar Sucursal</h2>
                 <div className="bg-white p-6 rounded-lg">
                     <form 
                         className="w-full"
@@ -36,10 +36,10 @@ export default function AdminCreateBranchView() {
                             <input
                                 id="nombre"
                                 type="text"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
                                 placeholder="Ingrese su nombre"
                                 {...register("nombre", {
-                                    required: "El Nombre del Seguro es obligatorio",
+                                    required: "El nombre de la sucursal es obligatorio",
                                 })}
                             />
                             {errors.nombre && (
@@ -56,7 +56,7 @@ export default function AdminCreateBranchView() {
                             <input
                                 id="direccion"
                                 type="text"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
                                 placeholder="Ej: Av. Tecnologico 1414 Col. Castilagua Lerdo"
                                 {...register("direccion", {
                                     required: "La direccion es obligatoria"
@@ -76,7 +76,7 @@ export default function AdminCreateBranchView() {
                             <input
                                 id="telefono"
                                 type="text"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
                                 placeholder="Ej: 8717998877"
                                 {...register("telefono", {
                                     required: "El telefono es obligatorio"
@@ -96,7 +96,7 @@ export default function AdminCreateBranchView() {
                             {/* Capa de fondo para el hover */}
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
                             {/* Contenido del botón */}
-                            <span className="relative z-10">Crear Cuenta</span>
+                            <span className="relative z-10">Guardar Cambios</span>
                         </button>
                     </form>
                 </div>

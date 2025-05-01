@@ -1,26 +1,25 @@
 import { useForm } from "react-hook-form"
-import { InsuranceFormData } from "../../../types"
+import { BranchFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
 
-export default function AdminCreateInsuranceView() {
+export default function AdminBranchesCreateView() {
 
-    const initialValues : InsuranceFormData = {
-        tipo: '',
-        cobertura: '',
-        precio: 0,
-        descripcion: ''
+    const initialValues : BranchFormData = {
+        nombre: '',
+        direccion: '',
+        telefono: ''
     }
 
     const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-    const handleRegister = (formData: InsuranceFormData) => {
+    const handleRegister = (formData: BranchFormData) => {
 
     }
 
     return (
         <>
             <div className=" max-w-2xl mx-auto p-10">
-                <h2 className="text-2xl font-bold mb-8 text-gray-700">Crear un Nuevo Seguro</h2>
+                <h2 className="text-2xl font-bold mb-8 text-gray-700">Dar de alta Nueva Sucursal</h2>
                 <div className="bg-white p-6 rounded-lg">
                     <form 
                         className="w-full"
@@ -31,78 +30,60 @@ export default function AdminCreateInsuranceView() {
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="tipo"
-                            >Tipo</label>
+                                htmlFor="nombre"
+                            >Nombre</label>
 
                             <input
-                                id="tipo"
+                                id="nombre"
                                 type="text"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: Basico o Premium"
-                                {...register("tipo", {
-                                    required: "El Tipo de Seguro es obligatorio",
+                                placeholder="Ingrese su nombre"
+                                {...register("nombre", {
+                                    required: "El nombre de la sucursal es obligatorio",
                                 })}
                             />
-                            {errors.tipo && (
-                                <ErrorMessage>{errors.tipo.message}</ErrorMessage>
+                            {errors.nombre && (
+                                <ErrorMessage>{errors.nombre.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="cobertura"
-                            >Cobertura</label>
+                                htmlFor="direccion"
+                            >Direccion</label>
 
                             <input
-                                id="cobertura"
+                                id="direccion"
                                 type="text"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: Total o de Terceros"
-                                {...register("cobertura", {
-                                    required: "La Cobertura es obligatoria"
+                                placeholder="Ej: Av. Tecnologico 1414 Col. Castilagua Lerdo"
+                                {...register("direccion", {
+                                    required: "La direccion es obligatoria"
                                 })}
                             />
-                            {errors.cobertura && (
-                                <ErrorMessage>{errors.cobertura.message}</ErrorMessage>
+                            {errors.direccion && (
+                                <ErrorMessage>{errors.direccion.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="precio"
-                            >Precio</label>
+                                htmlFor="telefono"
+                            >Telefono</label>
 
                             <input
-                                id="precio"
-                                type="number"
+                                id="telefono"
+                                type="text"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 4500"
-                                {...register("precio", {
-                                    required: "El precio es obligatorio"
+                                placeholder="Ej: 8717998877"
+                                {...register("telefono", {
+                                    required: "El telefono es obligatorio"
                                 })}
                             />
-                            {errors.precio && (
-                                <ErrorMessage>{errors.precio.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="descripcion"
-                            >Descripcion</label>
-
-                            <textarea
-                                id="descripcion"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                {...register("descripcion", {
-                                    required: "La descripcion es obligatoria"
-                                })}
-                            />
-                            {errors.descripcion && (
-                                <ErrorMessage>{errors.descripcion.message}</ErrorMessage>
+                            {errors.telefono && (
+                                <ErrorMessage>{errors.telefono.message}</ErrorMessage>
                             )}
                         </div>
 
@@ -115,7 +96,7 @@ export default function AdminCreateInsuranceView() {
                             {/* Capa de fondo para el hover */}
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
                             {/* Contenido del botón */}
-                            <span className="relative z-10">Crear Seguro</span>
+                            <span className="relative z-10">Crear Sucursal</span>
                         </button>
                     </form>
                 </div>
