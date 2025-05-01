@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form"
 import { BranchFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
+import { useMutation } from "@tanstack/react-query"
+import { createBranch } from "../../../api/BranchesAPI"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export default function AdminBranchesCreateView() {
+
+    const navigate = useNavigate()
 
     const initialValues : BranchFormData = {
         nombre: '',
@@ -12,9 +18,18 @@ export default function AdminBranchesCreateView() {
 
     const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-    const handleRegister = (formData: BranchFormData) => {
+    const { mutate } = useMutation({
+        mutationFn: createBranch,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (response) => {
+            toast.success(response)
+            navigate('/admin/branches')
+        }
+    })
 
-    }
+    const handleRegister = (data: BranchFormData) => mutate(data)
 
     return (
         <>
