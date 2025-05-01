@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form"
 import { InsuranceFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
 
-export default function AdminCreateInsuranceView() {
+export default function AdminInsuranceCreateView() {
 
     const initialValues : InsuranceFormData = {
         tipo: '',
