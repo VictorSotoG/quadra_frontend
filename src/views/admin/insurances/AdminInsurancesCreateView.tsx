@@ -1,8 +1,14 @@
 import { useForm } from "react-hook-form"
 import { InsuranceFormData } from "../../../types"
 import ErrorMessage from "../../../components/ErrorMessage"
+import { useMutation } from "@tanstack/react-query"
+import { createInsurance } from "../../../api/InsurancesAPI"
+import { toast } from "react-toastify"
+import { useNavigate } from "react-router-dom"
 
 export default function AdminInsuranceCreateView() {
+
+    const navigate = useNavigate()
 
     const initialValues : InsuranceFormData = {
         tipo: '',
@@ -13,8 +19,24 @@ export default function AdminInsuranceCreateView() {
 
     const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-    const handleRegister = (formData: InsuranceFormData) => {
+    const { mutate } = useMutation({
+        mutationFn: createInsurance,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (response) => {
+            toast.success(response)
+            navigate('/admin/insurances')
+        }
+    })
 
+    const handleRegister = (data: InsuranceFormData) => {
+        // Convertir el precio de string a number
+        const formattedData = {
+            ...data,
+            precio: Number(data.precio),
+        };
+        mutate(formattedData);
     }
 
     return (

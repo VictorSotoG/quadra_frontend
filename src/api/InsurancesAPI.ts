@@ -1,6 +1,19 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminInsurancesSchema } from "../types";
+import { adminInsurancesSchema, InsuranceFormData } from "../types";
+
+
+export async function createInsurance(formData: InsuranceFormData) {
+    try {
+        const { data } = await api.post('/insurances', formData)
+        return data
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
 
 export async function getAllInsurances() {
     try {
@@ -15,3 +28,4 @@ export async function getAllInsurances() {
         }
     }
 }
+
