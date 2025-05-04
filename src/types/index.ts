@@ -130,7 +130,7 @@ export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>
 
 export const reservationSchema = z.object({
     _id: z.string(),
-    usuario_id: z.string(),
+    usuario_id: z.number(),
     vehiculo_id: z.number(),
     fecha_inicio: z.string(),
     fecha_fin: z.string(),
