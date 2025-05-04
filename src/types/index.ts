@@ -130,9 +130,7 @@ export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>
 
 export const reservationSchema = z.object({
     _id: z.string(),
-    nombre: z.string(),
-    email: z.string(),
-    telefono: z.string(),
+    usuario_id: z.string(),
     vehiculo_id: z.number(),
     fecha_inicio: z.string(),
     fecha_fin: z.string(),
@@ -173,9 +171,7 @@ export const reservationSchema = z.object({
 export const adminReservationSchema = z.array(
     reservationSchema.pick({
         _id: true,
-        nombre: true,
-        email: true,
-        telefono: true,
+        usuario_id: true,
         vehiculo_id: true,
         fecha_inicio: true,
         fecha_fin: true,
@@ -187,4 +183,4 @@ export const adminReservationSchema = z.array(
 )
 
 export type Reservation = z.infer<typeof reservationSchema>
-export type ReservationFormDataType = Pick<Reservation, 'nombre' | 'email' | 'telefono' | 'vehiculo_id' | 'fecha_inicio' | 'fecha_fin' >
+export type ReservationFormDataType = Pick<Reservation, 'vehiculo_id' | 'fecha_inicio' | 'fecha_fin' >
