@@ -142,7 +142,8 @@ export const reservationSchema = z.object({
     }),
     usuario: z.object({
         nombre: z.string(),
-        email: z.string()
+        email: z.string(),
+        telefono: z.string()
     }),
     vehiculo: z.object({
         marca: z.string(),
