@@ -140,8 +140,11 @@ export const reservationSchema = z.object({
         metodo_pago: z.string(),
         estado: z.string()
     }),
+    usuario: z.object({
+        nombre: z.string(),
+        email: z.string()
+    }),
     vehiculo: z.object({
-        id: z.number(),
         marca: z.string(),
         modelo: z.string(),
         color: z.string(),
@@ -158,11 +161,7 @@ export const reservationSchema = z.object({
             cobertura: z.string(),
             precio: z.number(),
             descripcion: z.string()
-        }),
-        imagen: z.string(),
-        estado: z.string(),
-        createdAt: z.string(),
-        updatedAt: z.string()
+        })
     }),
     createdAt: z.string(),
     updatedAt: z.string()
