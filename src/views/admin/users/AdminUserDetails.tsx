@@ -46,6 +46,9 @@ export default function AdminUserDetails() {
                                         <p className="text-gray-600">
                                             <strong className="text-gray-800">Confirmado:</strong> {userData.confirmado ? "Sí" : "No"}
                                         </p>
+                                        <p className="text-gray-600">
+                                            <strong className="text-gray-800">Telefono:</strong> {userData.telefono}
+                                        </p>
                                     </div>
                                 </div>
 

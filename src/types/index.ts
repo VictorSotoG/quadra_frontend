@@ -79,6 +79,7 @@ export const userSchema = z.object({
     id: z.number(),
     nombre: z.string(),
     email: z.string(),
+    telefono: z.string(),
     role: z.string(),
     imagen: z.string(),
     confirmado: z.boolean(),

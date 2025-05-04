@@ -75,9 +75,9 @@ export default function AdminReservationDetails() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Cliente</h3>
-                  <p className="text-md"><strong>Nombre:</strong> {reservationData.nombre}</p>
-                  <p className="text-md"><strong>Email:</strong> {reservationData.email}</p>
-                  <p className="text-md"><strong>Telefono:</strong> {reservationData.telefono}</p>
+                  <p className="text-md"><strong>Nombre:</strong> {reservationData.usuario.nombre}</p>
+                  <p className="text-md"><strong>Email:</strong> {reservationData.usuario.email}</p>
+                  <p className="text-md"><strong>Telefono:</strong> {reservationData.usuario.telefono}</p>
                 </div>
               </div>
 
