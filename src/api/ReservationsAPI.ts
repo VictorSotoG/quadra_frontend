@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminReservationSchema, Reservation, ReservationFormDataType, reservationSchema } from "../types";
+import { adminReservationsSchema, Reservation, ReservationFormDataType, reservationSchema } from "../types";
 
 
 export async function createReservation(formData : ReservationFormDataType) {
@@ -18,7 +18,7 @@ export async function createReservation(formData : ReservationFormDataType) {
 export async function getAllReservations() {
     try {
         const { data } = await api('/reservations');
-        const response = adminReservationSchema.safeParse(data)
+        const response = adminReservationsSchema.safeParse(data);
         if (response.success) {
             return response
         }

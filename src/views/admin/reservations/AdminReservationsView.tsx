@@ -7,7 +7,8 @@ export default function AdminReservationsView() {
 
   const columns = [
     { key: '_id', label: 'Id Reservacion'},
-    { key: 'nombre', label: 'Nombre Cliente' },
+    { key: 'usuario', label: 'Nombre Usuario' },
+    { key: 'vehiculo', label: 'Vehiculo' },
     { key: 'estado', label: 'Estado Reservacion' },
     { key: 'fecha_inicio', label: 'Fecha de Inicio' },
     { key: 'fecha_fin', label: 'Fecha Entrega' },

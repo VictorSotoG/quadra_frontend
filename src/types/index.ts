@@ -169,17 +169,23 @@ export const reservationSchema = z.object({
     updatedAt: z.string()
 })
 
-export const adminReservationSchema = z.array(
-    reservationSchema.pick({
+export const adminReservationSchema = z.object({
+    _id: z.string(),
+    usuario: z.string(),
+    vehiculo: z.string(),
+    fecha_inicio: z.string(),
+    fecha_fin: z.string(),
+    estado: z.string()
+})
+
+export const adminReservationsSchema = z.array(
+    adminReservationSchema.pick({
         _id: true,
-        usuario_id: true,
-        vehiculo_id: true,
+        usuario: true,
+        vehiculo: true,
         fecha_inicio: true,
         fecha_fin: true,
-        estado: true,
-        alquiler: true,
-        createdAt: true,
-        updatedAt: true
+        estado: true
     })
 )
 
