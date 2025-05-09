@@ -6,6 +6,8 @@ import { CheckPasswordForm } from '../../types'
 import ErrorMessage from '../ErrorMessage'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
+import { deleteInsurance } from '../../api/InsurancesAPI'
+import { deleteBranch } from '../../api/BranchesAPI'
 
 type DeleteModalProps = {
     viewName: string;
@@ -21,7 +23,7 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
 
     // Obtener id a eliminar
     const queryParams = new URLSearchParams(location.search);
-    const deleteId = queryParams.get('delete')!;
+    const deleteId = +queryParams.get('delete')!;
     const show = deleteId ? true : false
 
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues})
@@ -31,14 +33,47 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
     //     onError: (error) => toast.error(error.message)
     // })
 
-    // const deleteMutation = useMutation({
-    //     mutationFn: 
-    // })
-
-
-    const handleForm = async (formData: CheckPasswordForm) => {
+    // Función para determinar el método de eliminación según la vista actual
+    const getDeleteMethod = () => {
+        if (location.pathname.includes('/admin/branches')) {
+            return deleteBranch; // Método para eliminar sucursales
+        }
+        if (location.pathname.includes('/admin/insurances')) {
+            return deleteInsurance; // Método para eliminar seguros
+        }
         
-    }
+        // Agregar más rutas y métodos según sea necesario
+        return null;
+    };
+
+    // Mutación para eliminar el registro
+    const deleteMutation = useMutation({
+        mutationFn: async () => {
+            const deleteMethod = getDeleteMethod();
+            if (!deleteMethod) throw new Error('No se pudo determinar el método de eliminación para esta vista.');
+
+            // Ejecutar el método de eliminación con el ID
+            return deleteMethod(deleteId);
+        },
+        onSuccess: () => {
+            toast.success(`${viewName} eliminado correctamente.`);
+            navigate(location.pathname, { replace: true }); // Eliminar el parámetro "delete" de la URL
+        },
+        onError: (error: any) => {
+            toast.error(error.message || 'Hubo un error al eliminar el registro.');
+        },
+    });
+
+    // Manejar el envío del formulario
+    const handleForm = async (formData: CheckPasswordForm) => {
+        if (!deleteId) {
+            toast.error('No se encontró el ID para eliminar.');
+            return;
+        }
+
+        // Aquí podrías validar la contraseña antes de proceder
+        deleteMutation.mutate();
+    };
 
     return (
         <Transition appear show={show} as={Fragment}>
