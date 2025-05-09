@@ -43,3 +43,19 @@ export async function getInsuranceById(id: Insurance['id']) {
     }
 }
 
+type InsuranceAPIType = {
+    formData: InsuranceFormData,
+    insuranceId: Insurance['id']
+}
+
+export async function updateInsurance({ formData, insuranceId }: InsuranceAPIType) {
+    try {
+        const { data } = await api.put(`/insurances/${insuranceId}`, formData)
+        return data
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
