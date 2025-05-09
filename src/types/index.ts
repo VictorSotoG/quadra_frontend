@@ -1,5 +1,19 @@
-
 import { z } from "zod";
+
+const authSchema = z.object({
+    name: z.string(),
+    email: z.string().email(),
+    current_password: z.string(),
+    password: z.string(),
+    password_confirmation: z.string(),
+    token: z.string()
+})
+
+type Auth = z.infer<typeof authSchema>
+
+
+export type CheckPasswordForm = Pick<Auth, 'password'>
+
 
 /* Vehiculos */
 export const carSchema = z.object({

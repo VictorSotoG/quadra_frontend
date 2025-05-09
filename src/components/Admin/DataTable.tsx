@@ -77,10 +77,11 @@ export default function DataTable({ columns, data }: DataTableProps) {
                                 >
                                     Editar
                                 </button>
-                                <Link 
-                                    to={'/'} 
+                                <button
+                                    type="button"
                                     className="bg-red-500 hover:bg-red-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
-                                >Eliminar</Link>
+                                    onClick={() => navigate(location.pathname + `?delete=${row.id || row._id}`)}
+                                >Eliminar</button>
                             </td>
                         </tr>
                     ))}
