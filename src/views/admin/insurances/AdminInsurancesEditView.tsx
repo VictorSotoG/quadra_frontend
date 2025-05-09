@@ -18,5 +18,5 @@ export default function AdminInsuranceEditView() {
     console.log(data)
     if (isLoading) return 'Cargando...'
     if (isError) return <Navigate to='/404' />
-    if (data) return <AdminEditInsuranceForm data={data} />
+    if (data) return <AdminEditInsuranceForm data={data} insuranceId={insuranceId} />
 }

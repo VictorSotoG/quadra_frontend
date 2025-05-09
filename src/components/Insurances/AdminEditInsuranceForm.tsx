@@ -1,14 +1,21 @@
 
-import { InsuranceFormData } from '../../types'
+import { Insurance, InsuranceFormData } from '../../types'
 import { useForm } from 'react-hook-form'
 import ErrorMessage from '../ErrorMessage'
+import { useMutation } from '@tanstack/react-query'
+import { updateInsurance } from '../../api/InsurancesAPI'
+import { toast } from 'react-toastify'
+import { useNavigate } from 'react-router-dom'
 
 type AdminInsuranceEditFormProps = {
     data: InsuranceFormData
+    insuranceId: Insurance['id']
 }
 
-export default function AdminEditInsuranceForm({data}: AdminInsuranceEditFormProps) {
+export default function AdminEditInsuranceForm({data, insuranceId}: AdminInsuranceEditFormProps) {
   
+    const navigate = useNavigate()
+
     const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: {
         tipo: data.tipo,
         cobertura: data.cobertura,
@@ -16,8 +23,26 @@ export default function AdminEditInsuranceForm({data}: AdminInsuranceEditFormPro
         descripcion: data.descripcion
     }})
 
-    const handleRegister = (formData: InsuranceFormData) => {
 
+    const { mutate } = useMutation({
+        mutationFn: updateInsurance,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            toast.success(data)
+            navigate('/admin/insurances')
+        }
+    })
+
+
+    const handleRegister = (formData: InsuranceFormData) => {
+        const data = {
+            formData,
+            insuranceId
+        }
+
+        mutate(data)
     }
 
     return (
