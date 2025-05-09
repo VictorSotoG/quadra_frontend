@@ -1,15 +1,34 @@
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
+import { CheckPasswordForm } from '../../types'
+import ErrorMessage from '../ErrorMessage'
 
+type DeleteModalProps = {
+    viewName: string;
+}
 
-export default function DeleteModal() {
+export default function DeleteModal( { viewName }: DeleteModalProps) {
+
+    const initialValues : CheckPasswordForm = {
+        password: ''
+    }
 
     const navigate = useNavigate()
 
+    const queryParams = new URLSearchParams(location.search);
+    const deleteId = queryParams.get('delete')!;
+    const show = deleteId ? true : false
+
+    const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues})
+
+    const handleForm = async (formData: CheckPasswordForm) => {
+        
+    }
 
     return (
-        <Transition appear show={true} as={Fragment}>
+        <Transition appear show={show} as={Fragment}>
             <Dialog as="div" className="relative z-10" onClose={() => navigate(location.pathname, { replace: true })}>
                 <Transition.Child
                     as={Fragment}
@@ -39,10 +58,10 @@ export default function DeleteModal() {
                                 <Dialog.Title
                                     as="h3"
                                     className="font-black text-4xl  my-5"
-                                >Eliminar Proyecto </Dialog.Title>
+                                >Eliminar {viewName} </Dialog.Title>
 
-                                <p className="text-xl font-bold">Confirma la eliminación del proyecto {''}
-                                    <span className="text-fuchsia-600">colocando tu password</span>
+                                <p className="text-xl font-bold">Confirma la eliminación del {viewName} {''}
+                                    <span className="text-sky-600">colocando tu password</span>
                                 </p>
 
                                 <form
@@ -72,15 +91,15 @@ export default function DeleteModal() {
 
                                     <input
                                         type="submit"
-                                        className=" bg-fuchsia-600 hover:bg-fuchsia-700 w-full p-3  text-white font-black  text-xl cursor-pointer"
-                                        value='Eliminar Proyecto'
+                                        className=" bg-sky-600 hover:bg-sky-700 w-full p-3 rounded-lg text-white font-black text-xl cursor-pointer"
+                                        value={`Eliminar ${viewName}`}
                                     />
                                 </form>
                             </Dialog.Panel>
                         </Transition.Child>
                     </div>
                 </div>
-            </Dialo>
+            </Dialog>
         </Transition>
     )
 }

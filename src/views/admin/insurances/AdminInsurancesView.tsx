@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { getAllInsurances } from "../../../api/InsurancesAPI";
 import DataTable from "../../../components/Admin/DataTable";
+import DeleteModal from "../../../components/Admin/DeleteModal";
 
 export default function AdminInsurancesView() {
 

@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { formatCurrency, formateDate } from "../../utils/utils";
+import DeleteModal from "./DeleteModal";
 
 type Column = {
     key: string;
@@ -14,6 +15,20 @@ type DataTableProps = {
 export default function DataTable({ columns, data }: DataTableProps) {
     const location = useLocation();
     const navigate = useNavigate();
+
+    
+    // Determinar el nombre de la vista basado en la ruta
+    const getViewName = () => {
+        if (location.pathname.includes('/admin/cars')) return 'Vehiculo';
+        if (location.pathname.includes('/admin/insurances')) return 'Seguro';
+        if (location.pathname.includes('/admin/users')) return 'Usuario';
+        if (location.pathname.includes('/admin/reservations')) return 'Reservacion';
+        if (location.pathname.includes('/admin/branches')) return 'Sucursal';
+        return 'Registro'; // Valor por defecto
+    };
+
+    const viewName = getViewName(); // Obtener el nombre de la vista
+
 
     return (
         <div className=" bg-slate-50 rounded-lg overflow-hidden border border-gray-300">
@@ -63,7 +78,7 @@ export default function DataTable({ columns, data }: DataTableProps) {
                                     <button
                                         type="button"
                                         // to={`/admin/${row.}/details/${row.id}`} 
-                                        className="bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
+                                        className="bg-sky-500 hover:bg-sky-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
                                         onClick={() => navigate(location.pathname + `/details/${row.id || row._id}`)}
                                     >
                                         Detalles
@@ -87,6 +102,8 @@ export default function DataTable({ columns, data }: DataTableProps) {
                     ))}
                 </tbody>
             </table>
+
+            <DeleteModal viewName={viewName} />
         </div>
     );
 }
