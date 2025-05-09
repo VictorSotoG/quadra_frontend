@@ -1,6 +1,6 @@
 import { isAxiosError } from "axios";
 import api from "../lib/axios";
-import { adminBranchSchema, BranchFormData } from "../types";
+import { adminBranchSchema, Branch, BranchFormData } from "../types";
 
 
 export async function createBranch(formData: BranchFormData) {
@@ -21,6 +21,19 @@ export async function getAllBranches() {
         if (response.success) {
             return response.data
         }
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+
+
+export async function deleteBranch(id: Branch['id']) {
+    try {
+        const { data } = await api.delete<string>(`/branches/${id}`)
+        return data
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error)
