@@ -50,7 +50,19 @@ type InsuranceAPIType = {
 
 export async function updateInsurance({ formData, insuranceId }: InsuranceAPIType) {
     try {
-        const { data } = await api.put(`/insurances/${insuranceId}`, formData)
+        const { data } = await api.put<string>(`/insurances/${insuranceId}`, formData)
+        return data
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+
+export async function deleteInsurance(id: Insurance['id']) {
+    try {
+        const { data } = await api.delete<string>(`/insurances/${id}`)
         return data
     } catch (error) {
         if (isAxiosError(error) && error.response) {

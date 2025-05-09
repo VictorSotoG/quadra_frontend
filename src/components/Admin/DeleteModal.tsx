@@ -4,6 +4,8 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { CheckPasswordForm } from '../../types'
 import ErrorMessage from '../ErrorMessage'
+import { useMutation } from '@tanstack/react-query'
+import { toast } from 'react-toastify'
 
 type DeleteModalProps = {
     viewName: string;
@@ -17,11 +19,22 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
 
     const navigate = useNavigate()
 
+    // Obtener id a eliminar
     const queryParams = new URLSearchParams(location.search);
     const deleteId = queryParams.get('delete')!;
     const show = deleteId ? true : false
 
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues})
+
+    // const checkUserPasswordMutation = useMutation({
+    //     mutationFn: checkPassword,
+    //     onError: (error) => toast.error(error.message)
+    // })
+
+    // const deleteMutation = useMutation({
+    //     mutationFn: 
+    // })
+
 
     const handleForm = async (formData: CheckPasswordForm) => {
         
