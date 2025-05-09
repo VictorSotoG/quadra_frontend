@@ -59,14 +59,16 @@ export default function DataTable({ columns, data }: DataTableProps) {
                             <td className="p-2 flex gap-2 justify-center">
                                 {/* Agregar logica para que no muestre el boton de detalles en caso de que sea
                                     informacion de Seguros y Sucursales */}
-                                <button
-                                    type="button"
-                                    // to={`/admin/${row.}/details/${row.id}`} 
-                                    className="bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
-                                    onClick={() => navigate(location.pathname + `/details/${row.id || row._id}`)}
-                                >
-                                    Detalles
-                                </button>
+                                {!(location.pathname.includes('/admin/insurances') || location.pathname.includes('/admin/branches')) && (
+                                    <button
+                                        type="button"
+                                        // to={`/admin/${row.}/details/${row.id}`} 
+                                        className="bg-blue-500 hover:bg-blue-600 transition-colors text-white text-sm py-1 px-4 rounded-md"
+                                        onClick={() => navigate(location.pathname + `/details/${row.id || row._id}`)}
+                                    >
+                                        Detalles
+                                    </button>
+                                )}
                                 <button
                                     type="button"
                                     // to={`/admin/${row.}/details/${row.id}`} 
