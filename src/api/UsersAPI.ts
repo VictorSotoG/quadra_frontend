@@ -29,3 +29,16 @@ export async function getUserById(id: User['id']) {
         }
     }
 }
+
+
+
+export async function deleteUser(id: User['id']) {
+    try {
+        const { data } = await api.delete(`/users/${id}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error);
+        }
+    }
+}
