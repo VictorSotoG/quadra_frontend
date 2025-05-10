@@ -8,6 +8,7 @@ import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { deleteInsurance } from '../../api/InsurancesAPI'
 import { deleteBranch } from '../../api/BranchesAPI'
+import { deleteCar } from '../../api/CarsAPI'
 
 type DeleteModalProps = {
     viewName: string;
@@ -35,6 +36,9 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
 
     // Función para determinar el método de eliminación según la vista actual
     const getDeleteMethod = () => {
+        if (location.pathname.includes('/admin/cars')) {
+            return deleteCar; // Método para eliminar sucursales
+        }
         if (location.pathname.includes('/admin/branches')) {
             return deleteBranch; // Método para eliminar sucursales
         }
@@ -56,7 +60,7 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
             return deleteMethod(deleteId);
         },
         onSuccess: () => {
-            toast.success(`${viewName} eliminado correctamente.`);
+            toast.success(`${viewName} eliminado/a correctamente.`);
             navigate(location.pathname, { replace: true }); // Eliminar el parámetro "delete" de la URL
         },
         onError: (error: any) => {

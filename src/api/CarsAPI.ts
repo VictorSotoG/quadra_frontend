@@ -29,3 +29,15 @@ export async function getCarById(id: Car['id']) {
         }
     }
 }
+
+
+export async function deleteCar(id: Car['id']) {
+    try {
+        const { data } = await api.delete(`/cars/${id}`);
+        return data;
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
