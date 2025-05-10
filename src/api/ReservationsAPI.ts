@@ -5,7 +5,6 @@ import { adminReservationsSchema, Reservation, ReservationFormDataType, reservat
 
 export async function createReservation(formData : ReservationFormDataType) {
     try {
-        // console.log(formData)
         const { data } = await api.post('/reservations', formData)
         return data
     } catch (error) {
@@ -18,7 +17,9 @@ export async function createReservation(formData : ReservationFormDataType) {
 export async function getAllReservations() {
     try {
         const { data } = await api('/reservations');
+        console.log(data)
         const response = adminReservationsSchema.safeParse(data);
+        console.log(response)
         if (response.success) {
             return response
         }
@@ -36,6 +37,18 @@ export async function getReservationById(id: Reservation['_id']) {
         if (response.success) {
             return response.data
         }
+    } catch (error) {
+        if (isAxiosError(error) && error.response) {
+            throw new Error(error.response.data.error)
+        }
+    }
+}
+
+
+export async function deleteReservation(id: Reservation['_id']) {
+    try {
+        const { data } = await api.delete(`/reservations/${id}`);
+        return data;
     } catch (error) {
         if (isAxiosError(error) && error.response) {
             throw new Error(error.response.data.error)

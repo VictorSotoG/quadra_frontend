@@ -10,6 +10,7 @@ import { deleteInsurance } from '../../api/InsurancesAPI'
 import { deleteBranch } from '../../api/BranchesAPI'
 import { deleteCar } from '../../api/CarsAPI'
 import { deleteUser } from '../../api/UsersAPI'
+import { deleteReservation } from '../../api/ReservationsAPI'
 
 type DeleteModalProps = {
     viewName: string;
@@ -46,6 +47,12 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
         if (location.pathname.includes('/admin/users')) {
             return deleteUser; 
         }
+
+        // Agregar logica para que reciba un id de mongo
+
+        // if (location.pathname.includes('/admin/reservations')) {
+        //     return deleteReservation; 
+        // }
         if (location.pathname.includes('/admin/branches')) {
             return deleteBranch; 
         }
