@@ -86,7 +86,6 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
             toast.error('No se encontró el ID para eliminar.');
             return;
         }
-
         // Aquí podrías validar la contraseña antes de proceder
         deleteMutation.mutate();
     };

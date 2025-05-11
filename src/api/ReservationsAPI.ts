@@ -17,9 +17,7 @@ export async function createReservation(formData : ReservationFormDataType) {
 export async function getAllReservations() {
     try {
         const { data } = await api('/reservations');
-        console.log(data)
         const response = adminReservationsSchema.safeParse(data);
-        console.log(response)
         if (response.success) {
             return response
         }
