@@ -3,6 +3,7 @@ import { z } from "zod";
 const authSchema = z.object({
     name: z.string(),
     email: z.string().email(),
+    telefono: z.string(),
     current_password: z.string(),
     password: z.string(),
     password_confirmation: z.string(),
@@ -12,7 +13,7 @@ const authSchema = z.object({
 type Auth = z.infer<typeof authSchema>
 
 
-export type UserRegistrationForm = Pick<Auth, 'name' | 'email' | 'password' | 'password_confirmation'>
+export type UserRegistrationForm = Pick<Auth, 'name' | 'email' | 'telefono' | 'password' | 'password_confirmation'>
 export type ConfirmToken = Pick<Auth, 'token'>
 export type RequestConfirmationCodeForm = Pick<Auth, 'email'>
 

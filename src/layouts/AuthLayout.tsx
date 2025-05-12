@@ -1,6 +1,7 @@
 import { Link, Outlet } from "react-router-dom";
 import Logo from "../components/Home/Logo";
 import { ArrowTurnUpLeftIcon } from "@heroicons/react/20/solid";
+import { ToastContainer } from "react-toastify";
 
 
 export default function AuthLayout() {
@@ -32,6 +33,11 @@ export default function AuthLayout() {
                 className="object-cover w-full h-full"
                 />
             </div>
+
+            <ToastContainer 
+              pauseOnHover={false}
+              pauseOnFocusLoss={false}
+            />
         </div>
     </>
   )

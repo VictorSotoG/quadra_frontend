@@ -1,20 +1,37 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { UserRegistrationForm } from "../../types";
+import ErrorMessage from "../../components/ErrorMessage";
+import { useMutation } from "@tanstack/react-query";
+import { createAccount } from "../../api/AuthAPI";
+import { toast } from "react-toastify";
 
 export default function RegisterView() {
 
-    const initialValues: UserLoginForm = {
+    const initialValues: UserRegistrationForm = {
         name: "",
         email: "",
+        telefono: "",
         password: "",
         password_confirmation: ""
     }
 
     const { register, handleSubmit, watch, reset, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-    const handleRegister = (formData: UserLoginForm) => {
+    const { mutate } = useMutation({
+        mutationFn: createAccount,
+        onError: (error) => {
+            toast.error(error.message)
+        },
+        onSuccess: (data) => {
+            toast.success(data);
+            reset()
+        }
+    })
 
-    }
+    const password = watch('password');
+
+    const handleRegister = (formData: UserRegistrationForm) => mutate(formData)
 
     return (
         <>
@@ -45,7 +62,7 @@ export default function RegisterView() {
                         })}
                     />
                     {errors.name && (
-                        <ErrorMessage>{errors.email.message}</ErrorMessage>
+                        <ErrorMessage>{errors.name.message}</ErrorMessage>
                     )}
                 </div>
 
@@ -76,6 +93,26 @@ export default function RegisterView() {
                 <div className="mb-4">
                     <label 
                         className="block text-gray-700 mb-2" 
+                        htmlFor="telefono"
+                    >Telefono</label>
+
+                    <input
+                        id="telefono"
+                        type="text"
+                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        placeholder="Ingrese su telefono"
+                        {...register("telefono", {
+                            required: "El Telefono es obligatorio",
+                        })}
+                    />
+                    {errors.telefono && (
+                        <ErrorMessage>{errors.telefono.message}</ErrorMessage>
+                    )}
+                </div>
+
+                <div className="mb-4">
+                    <label 
+                        className="block text-gray-700 mb-2" 
                         htmlFor="password"
                     >Contraseña</label>
 
@@ -93,7 +130,7 @@ export default function RegisterView() {
                         })}
                     />
                     {errors.password && (
-                        <ErrorMessage>{errors.email.message}</ErrorMessage>
+                        <ErrorMessage>{errors.password.message}</ErrorMessage>
                     )}
                 </div>
 
