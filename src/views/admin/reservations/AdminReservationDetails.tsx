@@ -18,7 +18,7 @@ export default function AdminReservationDetails() {
   if (reservationData) {
     return (
       <div className="p-6 max-w-6xl mx-auto">
-        <h1 className="text-3xl font-bold text-sky-700 mb-6 flex items-center">
+        <h1 className="text-xl font-bold text-sky-700 mb-6 flex items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             className="h-8 w-8 mr-2"
@@ -48,7 +48,7 @@ export default function AdminReservationDetails() {
             }`}
           >
             <div className="flex justify-between items-center">
-              <span className="text-lg font-semibold text-gray-800">
+              <span className="text-md font-semibold text-gray-800">
                 Reserva #{reservationData._id}
               </span>
               <span
@@ -75,9 +75,9 @@ export default function AdminReservationDetails() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Cliente</h3>
-                  <p className="text-md"><strong>Nombre:</strong> {reservationData.usuario.nombre}</p>
-                  <p className="text-md"><strong>Email:</strong> {reservationData.usuario.email}</p>
-                  <p className="text-md"><strong>Telefono:</strong> {reservationData.usuario.telefono}</p>
+                  <p className="text-sm"><strong>Nombre:</strong> {reservationData.usuario.nombre}</p>
+                  <p className="text-sm"><strong>Email:</strong> {reservationData.usuario.email}</p>
+                  <p className="text-sm"><strong>Telefono:</strong> {reservationData.usuario.telefono}</p>
                 </div>
               </div>
 
@@ -89,18 +89,18 @@ export default function AdminReservationDetails() {
                   <h3 className="text-sm font-medium text-gray-500">Vehiculo</h3>
                   <div className="flex gap-8">
                     <div className="space-y-2">
-                      <p className="text-md"><strong>Marca:</strong> {reservationData.vehiculo.marca}</p>
-                      <p className="text-md"><strong>Modelo:</strong> {reservationData.vehiculo.modelo}</p>
-                      <p className="text-md"><strong>Año:</strong> {reservationData.vehiculo.anio}</p>
-                      <p className="text-md"><strong>Color:</strong> {reservationData.vehiculo.color}</p>
-                      <p className="text-md"><strong>Transmision:</strong> {reservationData.vehiculo.transmision}</p>
+                      <p className="text-sm"><strong>Marca:</strong> {reservationData.vehiculo.marca}</p>
+                      <p className="text-sm"><strong>Modelo:</strong> {reservationData.vehiculo.modelo}</p>
+                      <p className="text-sm"><strong>Año:</strong> {reservationData.vehiculo.anio}</p>
+                      <p className="text-sm"><strong>Color:</strong> {reservationData.vehiculo.color}</p>
+                      <p className="text-sm"><strong>Transmision:</strong> {reservationData.vehiculo.transmision}</p>
                     </div>
                     <div className="space-y-2">
-                      <p className="text-md"><strong>Tipo:</strong> {reservationData.vehiculo.tipo}</p>
-                      <p className="text-md"><strong>Puertas:</strong> {reservationData.vehiculo.puertas}</p>
-                      <p className="text-md"><strong>Asientos:</strong> {reservationData.vehiculo.asientos}</p>
-                      <p className="text-md"><strong>Clima:</strong> {reservationData.vehiculo.clima ? 'Con Clima' : 'Sin Clima'}</p>
-                      <p className="text-md"><strong>Precio Por Dia:</strong> {formatCurrency(reservationData.vehiculo.precio_por_dia)}</p>
+                      <p className="text-sm"><strong>Tipo:</strong> {reservationData.vehiculo.tipo}</p>
+                      <p className="text-sm"><strong>Puertas:</strong> {reservationData.vehiculo.puertas}</p>
+                      <p className="text-sm"><strong>Asientos:</strong> {reservationData.vehiculo.asientos}</p>
+                      <p className="text-sm"><strong>Clima:</strong> {reservationData.vehiculo.clima ? 'Con Clima' : 'Sin Clima'}</p>
+                      <p className="text-sm"><strong>Precio Por Dia:</strong> {formatCurrency(reservationData.vehiculo.precio_por_dia)}</p>
                     </div>
                   </div>
                 </div>
@@ -112,9 +112,9 @@ export default function AdminReservationDetails() {
                 </div>
                 <div className="space-y-1">
                   <h3 className="text-sm font-medium text-gray-500">Seguro</h3>
-                  <p className="text-md"><strong>Tipo:</strong> {reservationData.vehiculo.seguro.tipo}</p>
-                  <p className="text-md"><strong>Cobertura:</strong> {reservationData.vehiculo.seguro.cobertura}</p>
-                  <p className="text-md"><strong>Precio:</strong> {formatCurrency(reservationData.vehiculo.seguro.precio)}</p>
+                  <p className="text-sm"><strong>Tipo:</strong> {reservationData.vehiculo.seguro.tipo}</p>
+                  <p className="text-sm"><strong>Cobertura:</strong> {reservationData.vehiculo.seguro.cobertura}</p>
+                  <p className="text-sm"><strong>Precio:</strong> {formatCurrency(reservationData.vehiculo.seguro.precio)}</p>
                   <p className="text-sm"><strong>Descripcion:</strong> {reservationData.vehiculo.seguro.descripcion}</p>
                 </div>
               </div>
@@ -152,7 +152,7 @@ export default function AdminReservationDetails() {
                           : "border border-green-200 bg-green-100 text-green-800"
                       }`}>
                 <h3 
-                  className={`text-lg font-semibold mb-3
+                  className={`text-md font-semibold mb-3
                     ${reservationData.alquiler.estado === "No Pagado"
                       ? "text-amber-800"
                       : "text-green-800"}
@@ -165,7 +165,7 @@ export default function AdminReservationDetails() {
                     <span className="text-gray-600">Monto:</span>
                     <span 
                       // className="font-bold text-green-700"
-                      className={`text-lg font-semibold
+                      className={`text-md font-semibold
                         ${reservationData.alquiler.estado === "No Pagado"
                           ? "text-amber-800"
                           : "text-green-800"}
@@ -175,13 +175,13 @@ export default function AdminReservationDetails() {
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Método:</span>
+                    <span className="text-sm text-gray-600">Método:</span>
                     <span className="font-medium capitalize">
                       {reservationData.alquiler.metodo_pago}
                     </span>
                   </div>
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Estado:</span>
+                    <span className="text-sm text-gray-600">Estado:</span>
                     <span
                       className={`px-2 py-1 rounded text-xs font-medium ${
                         reservationData.alquiler.estado === "No Pagado"
@@ -197,7 +197,7 @@ export default function AdminReservationDetails() {
                       ''
                     ) : (
                       <div>
-                        <span className="text-gray-600">Fecha pago:</span>
+                        <span className="text-sm text-gray-600">Fecha pago:</span>
                         <span>
                           {formateDate(reservationData.updatedAt)}
                         </span>
@@ -208,7 +208,7 @@ export default function AdminReservationDetails() {
               </div>
 
               <div className="bg-gray-50 p-5 rounded-xl border border-gray-200">
-                <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                <h3 className="text-md font-semibold text-gray-800 mb-3">
                   Informacion
                 </h3>
                 <div className="space-y-2">
@@ -226,8 +226,8 @@ export default function AdminReservationDetails() {
           </div>
 
           {/* Footer con acciones */}
-          <div className="px-6 py-4 bg-gray-50 border-t flex justify-end space-x-3">
-            <button className="px-4 py-2 bg-sky-600 rounded-lg text-white hover:bg-sky-700 transition">
+          <div className="px-6 py-2 bg-gray-50 border-t flex justify-end space-x-3">
+            <button className="text-sm px-4 py-2 bg-sky-600 rounded-lg text-white hover:bg-sky-700 transition">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5 inline mr-2"
