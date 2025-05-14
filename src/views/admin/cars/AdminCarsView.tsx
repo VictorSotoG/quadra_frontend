@@ -13,11 +13,7 @@ export default function AdminCarsView() {
     { key: 'anio', label: 'Año' },
     { key: 'transmision', label: 'Transmision' },
     { key: 'tipo', label: 'Tipo' },
-    { key: 'precio_por_dia', label: 'Precio por Dia' },
-    // { key: 'imagen', label: 'Imagen' },
-    // { key: 'estado', label: 'Estado' },
-    // { key: 'createdAt', label: 'Creado en' },
-    // { key: 'updatedAt', label: 'Actualizado en' },
+    { key: 'precio_por_dia', label: 'Precio por Dia' }
   ]
 
   const { data: carsData, isLoading, isError } = useQuery({

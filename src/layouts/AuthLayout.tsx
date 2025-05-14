@@ -11,7 +11,7 @@ export default function AuthLayout() {
             {/* Lado izquierdo: Formulario de login */}
             <div className="w-full md:w-1/2 flex flex-col justify-center items-center px-6 bg-gradient-to-r from-blue-200 to-white">
                 <div className="bg-white border border-gray-300 px-10 py-8 rounded-xl flex flex-col items-center">
-                    <div className="w-72 mb-10">
+                    <div className="w-60 mb-10">
                         <Logo />
                     </div>
                     {/*Formularios de Auth*/}

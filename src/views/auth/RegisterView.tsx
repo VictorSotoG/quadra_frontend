@@ -35,35 +35,57 @@ export default function RegisterView() {
 
     return (
         <>
-            <h2 className="text-2xl font-bold mb-4 text-gray-700">Registro de Cuenta</h2>
-            <p className="text-lg font-light text-gray-900 mb-10">
+            <h2 className="text-xl font-bold mb-4 text-gray-700">Registro de Cuenta</h2>
+            <p className="text-md font-light text-gray-900 mb-10">
                 Llena el formulario para {''}
                 <span className=" text-blue-500 font-bold"> crear tu cuenta</span>
             </p>
             <form 
-                className="w-full max-w-md"
+                className="w-full max-w-md text-sm"
                 noValidate
                 onSubmit={handleSubmit(handleRegister)}
             >
 
-                <div className="mb-4">
-                    <label 
-                        className="block text-gray-700 mb-2" 
-                        htmlFor="name"
-                    >Nombre</label>
+                <div className="mb-4 flex gap-4">
+                    <div>
+                        <label 
+                            className="block text-gray-700 mb-2" 
+                            htmlFor="name"
+                        >Nombre</label>
 
-                    <input
-                        id="name"
-                        type="text"
-                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Ingrese su nombre"
-                        {...register("name", {
-                            required: "El Nombre de Usuario es obligatorio",
-                        })}
-                    />
-                    {errors.name && (
-                        <ErrorMessage>{errors.name.message}</ErrorMessage>
-                    )}
+                        <input
+                            id="name"
+                            type="text"
+                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ingrese su nombre"
+                            {...register("name", {
+                                required: "El Nombre de Usuario es obligatorio",
+                            })}
+                        />
+                        {errors.name && (
+                            <ErrorMessage>{errors.name.message}</ErrorMessage>
+                        )}
+                    </div>
+
+                    <div>
+                        <label 
+                            className="block text-gray-700 mb-2" 
+                            htmlFor="telefono"
+                        >Telefono</label>
+
+                        <input
+                            id="telefono"
+                            type="text"
+                            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            placeholder="Ingrese su telefono"
+                            {...register("telefono", {
+                                required: "El Telefono es obligatorio",
+                            })}
+                        />
+                        {errors.telefono && (
+                            <ErrorMessage>{errors.telefono.message}</ErrorMessage>
+                        )}
+                    </div>
                 </div>
 
                 <div className="mb-4">
@@ -87,26 +109,6 @@ export default function RegisterView() {
                     />
                     {errors.email && (
                         <ErrorMessage>{errors.email.message}</ErrorMessage>
-                    )}
-                </div>
-
-                <div className="mb-4">
-                    <label 
-                        className="block text-gray-700 mb-2" 
-                        htmlFor="telefono"
-                    >Telefono</label>
-
-                    <input
-                        id="telefono"
-                        type="text"
-                        className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                        placeholder="Ingrese su telefono"
-                        {...register("telefono", {
-                            required: "El Telefono es obligatorio",
-                        })}
-                    />
-                    {errors.telefono && (
-                        <ErrorMessage>{errors.telefono.message}</ErrorMessage>
                     )}
                 </div>
 

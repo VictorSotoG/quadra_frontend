@@ -1,5 +1,7 @@
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
+import { UserLoginForm } from "../../types";
+import ErrorMessage from "../../components/ErrorMessage";
 
 export default function LoginView() {
 
@@ -16,9 +18,9 @@ export default function LoginView() {
 
   return (
     <>
-      <h2 className="text-3xl font-bold mb-6 text-gray-700">Inicia sesión</h2>
+      <h2 className="text-2xl font-bold mb-6 text-gray-700">Inicia sesión</h2>
       <form 
-        className="w-full max-w-md"
+        className="w-96 max-w-md"
         noValidate
         onSubmit={handleSubmit(handleLogin)}
       >
