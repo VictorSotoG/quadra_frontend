@@ -11,7 +11,7 @@ import AdminLayout from "./layouts/AdminLayout";
 import AdminCarDetails from "./views/admin/cars/AdminCarDetails";
 import AdminCarsView from "./views/admin/cars/AdminCarsView";
 import Cars from "./views/Cars";
-import Reserve from "./views/Reserve";
+import Reserve from "./views/reservation/ReservationView";
 import AdminUsersView from "./views/admin/users/AdminUsersView";
 import AdminUserDetails from "./views/admin/users/AdminUserDetails";
 import AdminBranchesView from "./views/admin/branches/AdminBranchesView";
@@ -22,6 +22,7 @@ import AdminBranchesCreateView from "./views/admin/branches/AdminBranchesCreateV
 import AdminBranchesEditView from "./views/admin/branches/AdminBranchesEditView";
 import AdminInsuranceCreateView from "./views/admin/insurances/AdminInsurancesCreateView";
 import AdminInsuranceEditView from "./views/admin/insurances/AdminInsurancesEditView";
+import ReservationDetails from "./views/reservation/ReservationDetails";
 
 export default function Router() {
   return (
@@ -38,6 +39,7 @@ export default function Router() {
               <Route path="/about" element={<About />} />
               <Route path="/cars" element={<Cars />} />
               <Route path="/reserve/:carId" element={<Reserve />}/>
+              <Route path="/reserve/reservationDetails/:reservationId" element={<ReservationDetails />}/>
             </Route>
             <Route element={<AdminLayout />}>
               {/* Car Routes  */}
