@@ -2,6 +2,7 @@ import { Link, Outlet } from "react-router-dom"
 import Logo from "../components/Home/Logo"
 import NavMenu from "../components/Home/NavMenu"
 import { UserCircleIcon } from "@heroicons/react/20/solid"
+import { ToastContainer } from "react-toastify"
 
 export default function AppLayout() {
   return (
@@ -94,6 +95,11 @@ export default function AppLayout() {
           </div>
           <p className="text-white">Copyright © { new Date().getFullYear()} - QUADRA Car Rental</p>
         </div>
+
+        <ToastContainer 
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
     </>
   )
 }
