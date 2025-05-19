@@ -7,20 +7,23 @@ import TopBar from "../components/Admin/TopBar";
 export default function AdminLayout() {
   return (
     <>
-        <div className="md:flex bg-slate-200">
-            <aside className="md:w-72 md:h-screen bg-[#0e2a47] text-white scrollbar-custom overflow-y-auto">
-                <AdminSideBar />
-            </aside>
-            {/* bg-[#0e2a47] */}
-            <main className="flex-1 bg-slate-100">
-                <TopBar />
-                <Outlet/>
-            </main>
-            <ToastContainer 
-              pauseOnHover={false}
-              pauseOnFocusLoss={false}
-            />
-        </div>
+      <div className="md:flex bg-slate-200 h-screen">
+        <aside className="md:w-72 md:h-screen bg-[#0e2a47] text-white scrollbar-custom overflow-y-auto">
+          <AdminSideBar />
+        </aside>
+        <main className="flex-1 bg-slate-100 flex flex-col h-screen">
+          <div className="flex-shrink-0">
+            <TopBar />
+          </div>
+          <div className="flex-1 overflow-y-auto">
+            <Outlet />
+          </div>
+        </main>
+        <ToastContainer 
+          pauseOnHover={false}
+          pauseOnFocusLoss={false}
+        />
+      </div>
     </>
   )
 }

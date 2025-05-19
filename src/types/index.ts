@@ -73,6 +73,8 @@ export const adminCarSchema = z.array(
 export type Car = z.infer<typeof carSchema>;
 export type CarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguro' | 'imagen' | 'estado' | 'createdAt' | 'updatedAt'>
 
+// export type CreateCarFormData = Pick<Car, 'marca' | 'modelo' | 'color' | 'anio' | 'transmision' | 'tipo' | 'precio_por_dia' | 'seguro' | 'imagen' | 'estado'>
+
 /* Insurances */
 export const insuranceSchema = z.object({
     id: z.number(),
