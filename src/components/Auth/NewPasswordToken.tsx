@@ -6,6 +6,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
+import { validateToken } from '../../api/AuthAPI'
 
 type NewPasswordTokenProps = {
     token: ConfirmToken['token']
@@ -30,7 +31,7 @@ export default function NewPasswordToken({token, setToken, setValidToken} : NewP
         setToken(token)
     }
 
-    const handleComplete = (token: string) => {}
+    const handleComplete = (token: string) => mutate({token})
     
     return (
         <>
@@ -41,7 +42,7 @@ export default function NewPasswordToken({token, setToken, setValidToken} : NewP
                     className="font-normal text-2xl text-center block"
                 >Codigo de 6 digitos</label>
                 <div className='flex justify-center gap-5'>
-                    <PinInput value='token' onChange={handleChange} onComplete={handleComplete}>
+                    <PinInput value={token} onChange={handleChange} onComplete={handleComplete}>
                         <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
                         <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
                         <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
