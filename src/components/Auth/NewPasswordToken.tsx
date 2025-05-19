@@ -43,21 +43,21 @@ export default function NewPasswordToken({token, setToken, setValidToken} : NewP
                 >Codigo de 6 digitos</label>
                 <div className='flex justify-center gap-5'>
                     <PinInput value={token} onChange={handleChange} onComplete={handleComplete}>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
-                        <PinInputField className='h-13 w-10 p-3 rounded-lg border-gray-300 placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
+                        <PinInputField className='h-15 w-10 p-3 rounded-lg border-gray-400 border placeholder-white text-center'/>
                     </PinInput>
                 </div>
             </form>
             <nav className='mt-10 flex flex-col space-y-4'>
                 <Link
                     to='/auth/forgot-password'
-                    className='text-center text-gray-300 font-normal'
+                    className='text-center text-gray-700 font-normal'
                 >
-                    Solicitar un nuevo Cdigo
+                    Solicitar un nuevo Codigo
                 </Link>
             </nav>
         </>

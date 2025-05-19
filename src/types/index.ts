@@ -18,6 +18,8 @@ export type ConfirmToken = Pick<Auth, 'token'>
 export type RequestConfirmationCodeForm = Pick<Auth, 'email'>
 export type ForgotPasswordForm = Pick<Auth, 'email'>
 
+export type NewPasswordForm = Pick<Auth, 'password' | 'password_confirmation'>
+
 export type CheckPasswordForm = Pick<Auth, 'password'>
 
 
@@ -151,7 +153,10 @@ export type BranchFormData = Pick<Branch, 'nombre' | 'direccion' | 'telefono'>
 
 export const reservationSchema = z.object({
     _id: z.string(),
-    usuario_id: z.number(),
+    // usuario_id: z.number(),
+    nombre: z.string(),
+    telefono: z.string(),
+    email: z.string(),
     vehiculo_id: z.number(),
     fecha_inicio: z.string(),
     fecha_fin: z.string(),
@@ -161,15 +166,16 @@ export const reservationSchema = z.object({
         metodo_pago: z.string(),
         estado: z.string()
     }),
-    usuario: z.object({
-        nombre: z.string(),
-        email: z.string(),
-        telefono: z.string()
-    }),
+    // usuario: z.object({
+    //     nombre: z.string(),
+    //     email: z.string(),
+    //     telefono: z.string()
+    // }),
     vehiculo: z.object({
         marca: z.string(),
         modelo: z.string(),
         color: z.string(),
+        imagen: z.string(),
         anio: z.number(),
         transmision: z.string(),
         tipo: z.string(),
@@ -191,7 +197,8 @@ export const reservationSchema = z.object({
 
 export const adminReservationSchema = z.object({
     _id: z.string(),
-    usuario: z.string(),
+    // usuario: z.string(),
+    nombre: z.string(),
     vehiculo: z.string(),
     fecha_inicio: z.string(),
     fecha_fin: z.string(),
@@ -201,7 +208,8 @@ export const adminReservationSchema = z.object({
 export const adminReservationsSchema = z.array(
     adminReservationSchema.pick({
         _id: true,
-        usuario: true,
+        // usuario: true,
+        nombre: true,
         vehiculo: true,
         fecha_inicio: true,
         fecha_fin: true,

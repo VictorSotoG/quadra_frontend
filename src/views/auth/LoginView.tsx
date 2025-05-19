@@ -1,7 +1,10 @@
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { UserLoginForm } from "../../types";
 import ErrorMessage from "../../components/ErrorMessage";
+import { useMutation } from "@tanstack/react-query";
+import { authenticateUser } from "../../api/AuthAPI";
+import { toast } from "react-toastify";
 
 export default function LoginView() {
 
@@ -12,9 +15,19 @@ export default function LoginView() {
 
   const { register, handleSubmit, formState: {errors} } = useForm({ defaultValues: initialValues})
 
-  const handleLogin = (formData: UserLoginForm) => {
+  const navigate = useNavigate();
 
-  }
+  const { mutate } = useMutation({
+    mutationFn: authenticateUser,
+    onError: (error) => {
+      toast.error(error.message);
+    },
+    onSuccess: () => {
+      navigate('/admin/cars')
+    }
+  })
+
+  const handleLogin = (formData: UserLoginForm) => mutate(formData);
 
   return (
     <>

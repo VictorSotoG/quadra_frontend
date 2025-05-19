@@ -23,6 +23,7 @@ import AdminBranchesEditView from "./views/admin/branches/AdminBranchesEditView"
 import AdminInsuranceCreateView from "./views/admin/insurances/AdminInsurancesCreateView";
 import AdminInsuranceEditView from "./views/admin/insurances/AdminInsurancesEditView";
 import ReservationDetails from "./views/reservation/ReservationDetails";
+import NewPasswordView from "./views/auth/NewPasswordView";
 
 export default function Router() {
   return (
@@ -33,6 +34,7 @@ export default function Router() {
               <Route path="/auth/register" element={<RegisterView />} />
               <Route path="/auth/confirm-account" element={<ConfirmAccountView/>}/>
               <Route path="/auth/forgot-password" element={<ForgotPasswordView/>}/>
+              <Route path="/auth/new-password" element={<NewPasswordView/>}/>
             </Route>
             <Route element={<AppLayout/>}>
               <Route path="/" element={<Home />} index />

@@ -1,11 +1,11 @@
 import { useNavigate, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useMutation, useQuery } from "@tanstack/react-query";
-import { getCarById } from "../api/CarsAPI";
-import ReservedCar from "../components/Cars/ReservedCar";
+import { getCarById } from "../../api/CarsAPI";
+import ReservedCar from "../../components/Cars/ReservedCar";
 import React, { useState } from "react";
-import { createReservation } from "../api/ReservationsAPI";
-import { toast, ToastContainer } from "react-toastify";
+import { createReservation } from "../../api/ReservationsAPI";
+import { toast } from "react-toastify";
 // import { ReservationFormDataType } from "../types";
 
 type ReservationFormData = {
@@ -17,7 +17,7 @@ type ReservationFormData = {
   metodoPago: string;
 };
 
-export default function Reserve() {
+export default function ReservationView() {
     const params = useParams(); 
     const carId = +params.carId!;
 
@@ -71,8 +71,8 @@ export default function Reserve() {
             toast.error(error.message)
         },
         onSuccess: (response) => {
-            toast.success(response)
-            // navigate('/')
+            toast.success(response.message)
+            navigate(`/reserve/reservationDetails/${response.id}`);
         }
     })
 
@@ -89,10 +89,13 @@ export default function Reserve() {
                 metodo_pago: formData.metodoPago
             }
         }
+        // console.log(data)
         mutate(data)
     };
 
-
+    if (isLoading) return <p className="mt-10 text-center text-lg font-semibold">Cargando...</p>;
+    if (isError) return <p className="mt-10 text-center text-lg font-semibold text-red-500">Error al cargar los datos.</p>;
+  
     return (
         <div className="max-w-[1500px] flex gap-8 mx-auto my-10 p-6 bg-white shadow-md rounded-lg">
             <div className="w-1/2">
@@ -229,7 +232,6 @@ export default function Reserve() {
                     />
                 )}
             </div>
-            <ToastContainer />
         </div>
     );
 }
