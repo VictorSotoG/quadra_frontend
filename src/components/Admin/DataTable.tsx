@@ -27,8 +27,17 @@ export default function DataTable({ columns, data }: DataTableProps) {
         return 'Registro'; // Valor por defecto
     };
 
-    const viewName = getViewName(); // Obtener el nombre de la vista
+    const getPathName = () => {
+        if (location.pathname.includes('/admin/cars')) return 'cars';
+        if (location.pathname.includes('/admin/insurances')) return 'insurances';
+        if (location.pathname.includes('/admin/users')) return 'users';
+        if (location.pathname.includes('/admin/reservations')) return 'reservations';
+        if (location.pathname.includes('/admin/branches')) return 'branches';
+        return ''; // Valor por defecto
+    };
 
+    const viewName = getViewName(); // Obtener el nombre de la vista
+    const pathName = getPathName();
 
     return (
         <div className=" bg-slate-50 rounded-lg overflow-hidden border border-gray-300">
@@ -103,7 +112,7 @@ export default function DataTable({ columns, data }: DataTableProps) {
                 </tbody>
             </table>
 
-            <DeleteModal viewName={viewName} />
+            <DeleteModal viewName={viewName} pathName={pathName}/>
         </div>
     );
 }
