@@ -10,7 +10,6 @@ export default function AdminUsersCreateView() {
         password: '',   
         password_confirmation: '',   
         role: ''
-        
     }
 
     const { handleSubmit, register, formState: {errors}} = useForm({ defaultValues: initialValues})
