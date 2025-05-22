@@ -9,14 +9,13 @@ export default function AdminUsersCreateView() {
         email: '',
         password: '',   
         password_confirmation: '',   
-        role: '',   
-        confirmado: false,   
+        role: ''
         
     }
 
     const { handleSubmit, register, formState: {errors}} = useForm({ defaultValues: initialValues})
 
-    const handleRegister = (formData) => {}
+    const handleRegister = (formData) => { console.log(formData)}
 
     return (
         <>
@@ -32,231 +31,105 @@ export default function AdminUsersCreateView() {
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="marca"
+                                htmlFor="nombre"
                             >Nombre</label>
 
                             <input
-                                id="marca"
+                                id="nombre"
                                 type="text"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: Mazda Toyota"
-                                {...register("marca", {
-                                    required: "La marca del auto es obligatoria",
+                                placeholder="Ingrese su nombre"
+                                {...register("nombre", {
+                                    required: "El nombre es obligatorio",
                                 })}
                             />
-                            {errors.marca && (
-                                <ErrorMessage>{errors.marca.message}</ErrorMessage>
+                            {errors.nombre && (
+                                <ErrorMessage>{errors.nombre.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="modelo"
-                            >Modelo</label>
+                                htmlFor="email"
+                            >Correo Electronico</label>
 
                             <input
-                                id="modelo"
+                                id="email"
                                 type="text"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: Corolla, Focus"
-                                {...register("modelo", {
-                                    required: "El modelo es obligatorio"
+                                placeholder="Ingrese su correo electronico"
+                                {...register("email", {
+                                    required: "El correo electronico es obligatorio"
                                 })}
                             />
-                            {errors.modelo && (
-                                <ErrorMessage>{errors.modelo.message}</ErrorMessage>
+                            {errors.email && (
+                                <ErrorMessage>{errors.email.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="color"
-                            >Color</label>
+                                htmlFor="password"
+                            >Contraseña</label>
 
                             <input
                                 id="color"
-                                type="text"
+                                type="password"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 4500"
-                                {...register("color", {
-                                    required: "El color es obligatorio"
+                                placeholder="Ingrese una contraseña"
+                                {...register("password", {
+                                    required: "La contraseña es obligatoria"
                                 })}
                             />
-                            {errors.color && (
-                                <ErrorMessage>{errors.color.message}</ErrorMessage>
+                            {errors.password && (
+                                <ErrorMessage>{errors.password.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="anio"
-                            >Año</label>
+                                htmlFor="password_confirmation"
+                            >Confirmar Contraseña</label>
 
                             <input
-                                id="anio"
-                                type="number"
+                                id="password_confirmation"
+                                type="password"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 2023"
-                                {...register("anio", {
-                                    required: "El año del auto es obligatorio"
+                                placeholder="Ingrese una contraseña"
+                                {...register("password", {
+                                    required: "La confirmacion de la contraseña es obligatoria"
                                 })}
                             />
-                            {errors.anio && (
-                                <ErrorMessage>{errors.anio.message}</ErrorMessage>
+                            {errors.password_confirmation && (
+                                <ErrorMessage>{errors.password_confirmation.message}</ErrorMessage>
                             )}
                         </div>
 
                         <div className="mb-4">
                             <label 
                                 className="block text-gray-700 mb-2" 
-                                htmlFor="transmision"
-                            >Transmision</label>
+                                htmlFor="role"
+                            >Rol</label>
 
                             <select
-                                id="transmision"
+                                id="role"
                                 className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                {...register("transmision", {
-                                    required: "La transmision del auto es obligatoria"
+                                {...register("role", {
+                                    required: "El Rol del Usuario es obligatorio"
                                 })}
                             >
                                 <option>-- Seleccionar Transmision --</option>
-                                <option>Manual</option>
-                                <option>Automatica</option>
+                                <option>Administrador</option>
+                                <option>Cliente</option>
                             </select>
-                            {errors.transmision && (
-                                <ErrorMessage>{errors.transmision.message}</ErrorMessage>
+                            {errors.role && (
+                                <ErrorMessage>{errors.role.message}</ErrorMessage>
                             )}
                         </div>
 
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="puertas"
-                            >Puertas</label>
-
-                            <input
-                                id="puertas"
-                                type="number"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 2, 4"
-                                {...register("puertas", {
-                                    required: "Las puertas del auto son obligatorias"
-                                })}
-                            />
-                            {errors.puertas && (
-                                <ErrorMessage>{errors.puertas.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="asientos"
-                            >Asientos</label>
-
-                            <input
-                                id="asientos"
-                                type="number"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 2, 4"
-                                {...register("asientos", {
-                                    required: "Los asientos del auto son obligatorios"
-                                })}
-                            />
-                            {errors.asientos && (
-                                <ErrorMessage>{errors.asientos.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="clima"
-                            >Clima</label>
-
-                            <select
-                                id="clima"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                {...register("clima", {
-                                    required: "El clima es obligatorio"
-                                })}
-                            >
-                                <option>-- Seleccione si o no --</option>
-                                <option>Si</option>
-                                <option>No</option>
-                            </select>
-                            {errors.clima && (
-                                <ErrorMessage>{errors.clima.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="tipo"
-                            >Tipo de Auto</label>
-
-                            <input
-                                id="tipo"
-                                type="text"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: Sedan, SUV"
-                                {...register("tipo", {
-                                    required: "El tipo de auto es obligatorio"
-                                })}
-                            />
-                            {errors.tipo && (
-                                <ErrorMessage>{errors.tipo.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="precio_por_dia"
-                            >Precio por dia</label>
-
-                            <input
-                                id="precio_por_dia"
-                                type="number"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                placeholder="Ej: 2, 4"
-                                {...register("precio_por_dia", {
-                                    required: "El precio por dia es obligatorio"
-                                })}
-                            />
-                            {errors.precio_por_dia && (
-                                <ErrorMessage>{errors.precio_por_dia.message}</ErrorMessage>
-                            )}
-                        </div>
-
-                        
-
-                        <div className="mb-4">
-                            <label 
-                                className="block text-gray-700 mb-2" 
-                                htmlFor="tipo"
-                            >Estado del Auto</label>
-
-                            <select
-                                id="estado"
-                                className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 mb-3"
-                                {...register("tipo", {
-                                    required: "El tipo de auto es obligatorio"
-                                })}
-                            >
-                                <option value="">-- Seleccionar estado del vehiculo --</option>
-                                <option value="">Disponible</option>
-                                <option value="">En espera</option>
-                                <option value="">No disponible</option>
-                            </select>
-                            {errors.tipo && (
-                                <ErrorMessage>{errors.tipo.message}</ErrorMessage>
-                            )}
-                        </div>
 
                         <button 
                             type="submit"
@@ -266,7 +139,7 @@ export default function AdminUsersCreateView() {
                             
                             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-blue-500 opacity-0 transition-opacity duration-1000 group-hover:opacity-100"></div>
                             
-                            <span className="relative z-10">Crear Auto</span>
+                            <span className="relative z-10">Crear Usuario</span>
                         </button>
                     </form>
                 </div>
