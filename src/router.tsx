@@ -27,6 +27,7 @@ import NewPasswordView from "./views/auth/NewPasswordView";
 import AdminCarsCreateView from "./views/admin/cars/AdminCarsCreateView";
 import AdminCarsEditView from "./views/admin/cars/AdminCarsEditView";
 import AdminUsersCreateView from "./views/admin/users/AdminUsersCreateView";
+import AdminUsersEditView from "./views/admin/users/AdminUsersEditView";
 
 export default function Router() {
   return (
@@ -60,6 +61,7 @@ export default function Router() {
               <Route path="/admin/users" element={<AdminUsersView/>}/>
               <Route path="/admin/users/details/:userId" element={<AdminUserDetails />} />
               <Route path="/admin/users/create" element={<AdminUsersCreateView />} />
+              <Route path="/admin/users/edit/:userId" element={<AdminUsersEditView />} />
               {/* Reservations Routes  */}
               <Route path="/admin/reservations" element={<AdminReservationsView />} />
               <Route path="/admin/reservations/details/:reservationId" element={<AdminReservationDetails />} />
