@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { CheckPasswordForm } from '../../types'
 import ErrorMessage from '../ErrorMessage'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
 import { deleteInsurance } from '../../api/InsurancesAPI'
 import { deleteBranch } from '../../api/BranchesAPI'
@@ -14,15 +14,18 @@ import { deleteReservation } from '../../api/ReservationsAPI'
 
 type DeleteModalProps = {
     viewName: string;
+    pathName: string;
 }
 
-export default function DeleteModal( { viewName }: DeleteModalProps) {
+export default function DeleteModal( { viewName, pathName }: DeleteModalProps) {
 
     const initialValues : CheckPasswordForm = {
         password: ''
     }
 
     const navigate = useNavigate()
+
+    const queryClient = useQueryClient();
 
     // Obtener id a eliminar
     const queryParams = new URLSearchParams(location.search);
@@ -73,6 +76,8 @@ export default function DeleteModal( { viewName }: DeleteModalProps) {
         },
         onSuccess: () => {
             toast.success(`${viewName} eliminado/a correctamente.`);
+            console.log(viewName)
+            queryClient.invalidateQueries({queryKey: [pathName]})
             navigate(location.pathname, { replace: true }); // Eliminar el parámetro "delete" de la URL
         },
         onError: (error: any) => {
