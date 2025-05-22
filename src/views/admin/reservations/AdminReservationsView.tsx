@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query"
-import { Link } from "react-router-dom"
+// import { Link } from "react-router-dom"
 import { getAllReservations } from "../../../api/ReservationsAPI"
 import DataTable from "../../../components/Admin/DataTable"
 
@@ -13,7 +13,6 @@ export default function AdminReservationsView() {
     { key: 'fecha_inicio', label: 'Fecha de Inicio' },
     { key: 'fecha_fin', label: 'Fecha Entrega' },
   ]
-
 
   const { data: reservationsData, isLoading, isError } = useQuery({
     queryKey: ['reservations'],
@@ -29,10 +28,10 @@ export default function AdminReservationsView() {
       <>
         <div className="px-6">
           <p className='p-4 font-semibold text-xl'>Reservaciones</p>
-          <Link
+          {/* <Link
             to={'/admin/reservations/create'}
             className="inline-block mb-4 px-6 py-2 bg-sky-600 hover:bg-sky-800 transition-colors text-white rounded-md"
-          >Agregar Reservacion</Link>
+          >Agregar Reservacion</Link> */}
           <DataTable columns={columns} data={reservationsData?.data} />
         </div>
       </>
