@@ -11,6 +11,7 @@ import { deleteBranch } from '../../api/BranchesAPI'
 import { deleteCar } from '../../api/CarsAPI'
 import { deleteUser } from '../../api/UsersAPI'
 import { deleteReservation } from '../../api/ReservationsAPI'
+import { checkPassword } from '../../api/AuthAPI'
 
 type DeleteModalProps = {
     viewName: string;
@@ -34,10 +35,10 @@ export default function DeleteModal( { viewName, pathName }: DeleteModalProps) {
 
     const { register, handleSubmit, formState: { errors } } = useForm({ defaultValues: initialValues})
 
-    // const checkUserPasswordMutation = useMutation({
-    //     mutationFn: checkPassword,
-    //     onError: (error) => toast.error(error.message)
-    // })
+    const checkUserPasswordMutation = useMutation({
+        mutationFn: checkPassword,
+        onError: (error) => toast.error(error.message)
+    })
 
     // Función para determinar el método de eliminación según la vista actual
     const getDeleteMethod = () => {
