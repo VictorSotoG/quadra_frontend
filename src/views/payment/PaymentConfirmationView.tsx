@@ -1,5 +1,5 @@
 
-export default function PaymentConfirmation() {
+export default function PaymentConfirmationView() {
   return (
     <div>PaymentConfirmation</div>
   )

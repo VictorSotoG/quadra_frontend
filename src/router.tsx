@@ -28,8 +28,9 @@ import AdminCarsCreateView from "./views/admin/cars/AdminCarsCreateView";
 import AdminCarsEditView from "./views/admin/cars/AdminCarsEditView";
 import AdminUsersCreateView from "./views/admin/users/AdminUsersCreateView";
 import AdminUsersEditView from "./views/admin/users/AdminUsersEditView";
-import PaymentMethods from "./views/payment/PaymentMethods";
-import PaymentConfirmation from "./views/payment/PaymentConfirmation";
+import PaymentMethodsView from "./views/payment/PaymentMethodsView";
+import PaymentConfirmationView from "./views/payment/PaymentConfirmationView";
+import AdminUserProfileView from "./views/admin/profile/AdminUserProfileView";
 
 export default function Router() {
   return (
@@ -50,8 +51,8 @@ export default function Router() {
               <Route path="/reserve/:carId" element={<Reserve />}/>
               <Route path="/reservationDetails/:reservationId" element={<ReservationDetails />}/>
               {/* Payment */}
-              <Route path="/methods" element={<PaymentMethods />}/>
-              <Route path="/confirmation" element={<PaymentConfirmation />} />
+              <Route path="/payment/methods" element={<PaymentMethodsView />}/>
+              <Route path="/payment/confirmation" element={<PaymentConfirmationView />} />
             </Route>
             <Route element={<AdminLayout />}>
               {/* Car Routes  */}
@@ -75,6 +76,8 @@ export default function Router() {
               <Route path="/admin/branches" element={<AdminBranchesView/>}/>
               <Route path="/admin/branches/create" element={<AdminBranchesCreateView />}/>
               <Route path="/admin/branches/edit/:branchId" element={<AdminBranchesEditView />}/>
+              {/* User Profile */}
+              <Route path="/admin/profile" element={<AdminUserProfileView/>}/>
             </Route>
         </Routes>
     </BrowserRouter>
