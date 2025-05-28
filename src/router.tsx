@@ -28,6 +28,7 @@ import AdminCarsCreateView from "./views/admin/cars/AdminCarsCreateView";
 import AdminCarsEditView from "./views/admin/cars/AdminCarsEditView";
 import AdminUsersCreateView from "./views/admin/users/AdminUsersCreateView";
 import AdminUsersEditView from "./views/admin/users/AdminUsersEditView";
+import PaymentMethods from "./views/payment/PaymentMethods";
 
 export default function Router() {
   return (
@@ -44,8 +45,11 @@ export default function Router() {
               <Route path="/" element={<Home />} index />
               <Route path="/about" element={<About />} />
               <Route path="/cars" element={<Cars />} />
+              {/* Reservation */}
               <Route path="/reserve/:carId" element={<Reserve />}/>
               <Route path="/reserve/reservationDetails/:reservationId" element={<ReservationDetails />}/>
+              {/* Payment */}
+              <Route path="/methods" element={<PaymentMethods />}/>
             </Route>
             <Route element={<AdminLayout />}>
               {/* Car Routes  */}
