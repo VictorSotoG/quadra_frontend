@@ -48,7 +48,7 @@ export default function Router() {
               <Route path="/cars" element={<Cars />} />
               {/* Reservation */}
               <Route path="/reserve/:carId" element={<Reserve />}/>
-              <Route path="/reserve/reservationDetails/:reservationId" element={<ReservationDetails />}/>
+              <Route path="/reservationDetails/:reservationId" element={<ReservationDetails />}/>
               {/* Payment */}
               <Route path="/methods" element={<PaymentMethods />}/>
               <Route path="/confirmation" element={<PaymentConfirmation />} />

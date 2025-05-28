@@ -72,7 +72,7 @@ export default function ReservationView() {
         },
         onSuccess: (response) => {
             toast.success(response.message)
-            navigate(`/reserve/reservationDetails/${response.id}`);
+            navigate(`/reservationDetails/${response.id}`);
         }
     })
 
